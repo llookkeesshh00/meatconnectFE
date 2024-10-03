@@ -4,10 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-
+  fontFamily: {
+    outfit: ["Outfit", "sans-serif"]
+ },
   theme: {
     extend: {},
   },
   plugins: [],
 }
-
