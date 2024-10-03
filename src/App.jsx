@@ -20,16 +20,15 @@ import SupplierTopNavbar from './pages/Supplier/SupplierTopNavbar';
 import SupplierHome from './pages/Supplier/SupplierHome';
 import SupplierUploadProduct from './pages/Supplier/SupplierUploadProduct';
 import SupplierOders from './pages/Supplier/SupplierOders';
-
-
-
-
+import SupplierContracts from './pages/Supplier/SupplierContracts';
+import BuyerNotifications from './pages/Buyer/BuyerNotifications';
+import SupplierNotifications from './pages/Supplier/SupplierNotifications';
 
 
 
 function App() {
   const [logged, setLogged] = useState(true);
-  const [role, setrole] = useState('supplier')
+  const [role, setrole] = useState('buyer')
 
   return (
    
@@ -55,12 +54,16 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/buyercontracts" element={<BuyerContracts />} />
             <Route path="/buyertracking" element={<BuyerTracking />} />
+            <Route path="/buyernotifications" element={<BuyerNotifications />} />
 
 
 
             <Route path="/supplier/supplierHome" element={<SupplierHome />} />
             <Route path='/supplieruploadproducts' element={<SupplierUploadProduct/>}/>
             <Route path='/supplierproducts' element={<SupplierOders/>}/>
+            <Route path='/suppliercontracts' element={<SupplierContracts/>}/>
+            <Route path="/suppliernotifications" element={<SupplierNotifications />} />
+
 
 
           </Routes>

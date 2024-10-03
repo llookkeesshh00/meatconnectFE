@@ -59,7 +59,7 @@ const SupplierUploadProduct = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-gray-100 pt-10">
       <div className="bg-white p-8 rounded-lg shadow-lg w-[73vw]">
         <h2 className="text-2xl font-semibold mb-6">Upload Product Requirements</h2>
         <form onSubmit={handleSubmit}>
