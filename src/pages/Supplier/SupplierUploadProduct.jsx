@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const SupplierUploadProduct = () => {
   const navigate = useNavigate();
-
+ const [Message, setMessage] = useState('')
   const chickenOptions = [
-    'Whole Breast', 'Breast with Ribs', 'Boneless Breast', 'Tenderloin', 'Whole Leg', 'Boneless Thigh', 
+    'Whole Breast', 'Breast with Ribs', 'Boneless Breast', 'Tenderloin', 'Whole Leg', 'Boneless Thigh',
     'Thigh', 'Drumstick', 'Wing Drumette', 'Whole Wing', 'Back', 'Paws', 'Gizzard', 'Liver', 'Heart'
   ];
 
@@ -14,17 +14,14 @@ const SupplierUploadProduct = () => {
   ];
 
   const fishOptions = ['Salmon',
-        'apollofish','Tuna', 'Cod',  'Mackerel','Sardines','Swordfish','Shrimp','Prawns','Crabs','Lobster', 'Squid','Octopus', 'Cuttlefish','Crawfish'
-   
+    'apollofish', 'Tuna', 'Cod', 'Mackerel', 'Sardines', 'Swordfish', 'Shrimp', 'Prawns', 'Crabs', 'Lobster', 'Squid', 'Octopus', 'Cuttlefish', 'Crawfish'
+
   ];
 
   const [formData, setFormData] = useState({
     productCategory: '',
     productName: '',
-    description: '',
     price: '',
-    negotiable: false,
-    availableQuantity: '',
   });
 
   // Dynamically get product name options based on category
@@ -49,17 +46,48 @@ const SupplierUploadProduct = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the form submission logic
-    console.log('Product Uploaded:', formData);
+    
+    // Get the token from localStorage
+    const token = localStorage.getItem('token');
 
-    // Navigate to contracts page after upload
-    navigate('/supplier/contracts');
+    try {
+      let res = await fetch('http://localhost:3000/supplier/uploadProduct', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Attach the token in Authorization header
+        },
+        body: JSON.stringify(formData),
+      });
+
+      let data = await res.json();
+
+      if (res.ok) {
+        setMessage('Product uploaded successfully!');
+        alert('product uploaded sucessfully');
+        setFormData({
+          productCategory: '',
+          productName: '',
+          price: ''})
+          
+      } else {
+        setMessage(data.error || 'Failed to upload product.');
+      }
+    } catch (error) {
+      console.error('Error uploading product:', error);
+      setMessage('An error occurred while uploading the product.');
+    }
   };
 
+
+
+
+
+
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100 pt-10">
+    <div className="flex justify-center items-bcenter h-screen bg-gray-000 ">
       <div className="bg-white p-8 rounded-lg shadow-lg w-[73vw]">
         <h2 className="text-2xl font-semibold mb-6">Upload Product Requirements</h2>
         <form onSubmit={handleSubmit}>
@@ -82,7 +110,7 @@ const SupplierUploadProduct = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="productName">
               Product Name
             </label>
-            <select 
+            <select
               id="productName"
               name="productName"
               value={formData.productName}
@@ -97,23 +125,9 @@ const SupplierUploadProduct = () => {
             </select>
           </div>
 
-          
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-              Description
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
-              rows="4"
-              required
-            />
-          </div>
 
-      
+
+
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
               Price
@@ -123,37 +137,6 @@ const SupplierUploadProduct = () => {
               id="price"
               name="price"
               value={formData.price}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
-              required
-            />
-          </div>
-
-          {/* Negotiable */}
-          <div className="mb-4 flex items-center">
-            <input
-              type="checkbox"
-              id="negotiable"
-              name="negotiable"
-              checked={formData.negotiable}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            <label htmlFor="negotiable" className="text-gray-700 text-sm font-bold">
-              Price Negotiable
-            </label>
-          </div>
-
-          {/* Available Quantity */}
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="availableQuantity">
-              Available Quantity
-            </label>
-            <input
-              type="number"
-              id="availableQuantity"
-              name="availableQuantity"
-              value={formData.availableQuantity}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
               required
