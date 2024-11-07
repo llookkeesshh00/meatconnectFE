@@ -4,19 +4,19 @@ import { useNavigate } from 'react-router-dom';
 const SupplierUploadProduct = () => {
   const navigate = useNavigate();
  const [Message, setMessage] = useState('')
-  const chickenOptions = [
-    'Whole Breast', 'Breast with Ribs', 'Boneless Breast', 'Tenderloin', 'Whole Leg', 'Boneless Thigh',
-    'Thigh', 'Drumstick', 'Wing Drumette', 'Whole Wing', 'Back', 'Paws', 'Gizzard', 'Liver', 'Heart'
-  ];
+ const chickenOptions = [
+  'whole breast', 'breast with ribs', 'boneless breast', 'tenderloin', 'whole leg', 'boneless thigh',
+  'thigh', 'drumstick', 'wing drumette', 'whole wing', 'back', 'paws', 'gizzard', 'liver', 'heart'
+];
 
-  const muttonOptions = [
-    'Leg', 'Loin', 'Rib', 'Shoulder', 'Breast', 'Shank', 'Neck', 'Liver', 'Heart', 'Kidneys'
-  ];
+const muttonOptions = [
+  'leg', 'loin', 'rib', 'shoulder', 'breast', 'shank', 'neck', 'liver', 'heart', 'kidneys'
+];
 
-  const fishOptions = ['Salmon',
-    'apollofish', 'Tuna', 'Cod', 'Mackerel', 'Sardines', 'Swordfish', 'Shrimp', 'Prawns', 'Crabs', 'Lobster', 'Squid', 'Octopus', 'Cuttlefish', 'Crawfish'
-
-  ];
+const fishOptions = [
+  'salmon', 'apollo fish', 'tuna', 'cod', 'mackerel', 'sardines', 'swordfish', 'shrimp', 'prawns',
+  'crabs', 'lobster', 'squid', 'octopus', 'cuttlefish', 'crawfish'
+];
 
   const [formData, setFormData] = useState({
     productCategory: '',
@@ -27,11 +27,11 @@ const SupplierUploadProduct = () => {
   // Dynamically get product name options based on category
   const getProductOptions = () => {
     switch (formData.productCategory) {
-      case 'Chicken':
+      case 'chicken':
         return chickenOptions;
-      case 'Mutton':
+      case 'mutton':
         return muttonOptions;
-      case 'Fish':
+      case 'fish':
         return fishOptions;
       default:
         return [];
@@ -99,9 +99,9 @@ const SupplierUploadProduct = () => {
             <select
               id="productCategory" name="productCategory" value={formData.productCategory} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" required >
               <option value="">Select a category</option>
-              <option value="Chicken">Chicken</option>
-              <option value="Mutton">Mutton</option>
-              <option value="Fish">Fish</option>
+              <option value="chicken">Chicken</option>
+              <option value="mutton">Mutton</option>
+              <option value="fish">Fish</option>
             </select>
           </div>
 

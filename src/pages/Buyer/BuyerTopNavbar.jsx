@@ -37,7 +37,7 @@ const BuyerTopNavbar = () => {
         </div>
 
         {/* Search bar */}
-        <div className="searchbar flex items-center">
+        {/* <div className="searchbar flex items-center">
           <input
             type="text"
             name="search"
@@ -45,7 +45,7 @@ const BuyerTopNavbar = () => {
             className="rounded-lg p-1 shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all"
             placeholder="Search your requirements"
           />
-        </div>
+        </div> */}
 
         {/* Logout button */}
         <div onClick={handleLogout} className="item flex items-center gap-1 transition-transform transform hover:scale-105 hover:shadow-md hover:bg-purple-50 p-2 rounded-md cursor-pointer">

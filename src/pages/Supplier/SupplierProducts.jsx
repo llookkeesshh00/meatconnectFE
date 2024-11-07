@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import prod_img from '../../assets/source_img';
 const SupplierProducts = () => {
   const [Products, setProducts] = useState([]);
 
@@ -61,20 +61,35 @@ const SupplierProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {Products.map((product, index) => (
-              <tr key={index}>
-                <td className="px-6 py-4">
-                  <img src="/assets/uploadImages/chickenbreast.jpeg" className="h-20" alt={product.productName} />
-                </td>
-                <td className="px-6 py-4">{product.productCategory}</td>
-                <td className="px-6 py-4">{product.productName}</td>
-                <td className="px-6 py-4">${product.price}</td>
-                <td className="px-6 py-4">
-                   <button className="bg-red-500 text-white px-4 py-2 rounded hover:shadow-md hover:bg-red-400" onClick={() => handleDelete(product._id)}> Delete </button>
-                </td>
-              </tr>
-            ))}
+            {Products.map((product, index) => {
+              return (
+                <tr key={index}>
+                  <td className="px-6 py-4">
+                    <img
+                      src={prod_img[product.productCategory][product.productName]}
+                      width={100}  // Set desired width
+                      height={100} // Set desired height
+                      className="object-cover" // Optional: maintain aspect ratio
+                      alt={product.productName}
+                    />
+                  </td>
+                  <td className="px-6 py-4">{product.productCategory}</td>
+                  <td className="px-6 py-4">{product.productName}</td>
+                  <td className="px-6 py-4">${product.price}</td>
+                  <td className="px-6 py-4">
+                    <button
+                      className="bg-red-500 text-white px-4 py-2 rounded hover:shadow-md hover:bg-red-400"
+                      onClick={() => handleDelete(product._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
+
+
         </table>
       </div>
     </div>

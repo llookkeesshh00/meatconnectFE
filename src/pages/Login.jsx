@@ -44,7 +44,7 @@ const Login = ({ role, switchToSignup,terminate }) => {
         setErrorMessage(data.error);
       }
     } catch (err) {
-      setErrorMessage('Login failed. Please try again.');
+      setErrorMessage('Login failed. Please try again.'+err);
       console.error('Error during login:', err);
     }
   };

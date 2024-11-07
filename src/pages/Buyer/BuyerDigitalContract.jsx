@@ -1,121 +1,197 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const BuyerDigitalContract = () => {
-    const location= useLocation();
-    console.log(location.state)
+    let date = new Date();
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const { productId, supplierId } = location.state || {};
-    
-    // Dummy data for Supplier and Product Details
+    const [isChecked, setIsChecked] = useState(false);
+
+
+
+
     const [supplierDetails, setSupplierDetails] = useState({
-        name: 'John Doe Supplies',
-        id: 'SUP12345',
-        email: 'johndoe@example.com',
-        contact: '9876543210',
-        address: '123 Supply St, Meat Town',
+        name: '',
+        id: '',
+        email: '',
+        contact: '',
+        address: '',
     });
 
     const [productDetails, setProductDetails] = useState({
-        category: 'Meat Products',
-        name: 'Chicken Breast',
-        price: 'Rs 200/Kg',
+        category: '',
+        name: '',
+        price: '',
     });
 
     const [buyerDetails, setBuyerDetails] = useState({
         name: '',
         id: '',
-        email:'',
+        email: '',
         contact: '',
         address: '',
     });
 
     const [deliveryLocation, setDeliveryLocation] = useState({
-        houseNumber: '',
+        name: '',
         area: '',
         city: '',
         state: '',
         pincode: '',
     });
     const [contractDetails, setContractDetails] = useState({
-        date: '',
-        period: '',
+        date: "",
+        period: 0,
         paymentType: '',
         paymentMode: '',
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setContractDetails((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+
+
+    const handleCheckboxChange = (e) => {
+        setIsChecked(!isChecked);
     };
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
 
-  useEffect(() => {
-    const getBuyerDetails= async (req,res)=>{
-        try{
-            const response = await fetch('http://localhost:3000/buyer/getBuyerDetails', { // Adjust the endpoint as necessary
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization
-              'Content-Type': 'application/json',
-            },
-          });
-
-          if(!response.ok)
-            console.log("error in fetching buyer details"); 
-           let data= await response.json();
-           console.log(buyerDetails)
-             setBuyerDetails({
-            name: data.name,                  // 'bhanu'
-            id: data.buyerid,                 // '67040dd8046852bd45b2d1c4'
-            email: data.email,                // 'bhanukiran280@gmail.com'
-            contact: data.mobile,             // '9381553534'
-            address: data.address,             // 'Uppal,Hyderabad,India'
-          });
+        // Check if the field name exists in contractDetails or deliveryLocation
+        if (Object.keys(contractDetails).includes(name)) {
+            setContractDetails((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
+        } else if (Object.keys(deliveryLocation).includes(name)) {
+            setDeliveryLocation((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
         }
-        catch(error)
+    };
+    const handleSubmit = async () => {
+        if (!isChecked) {
+            alert("please click on the checkbox to agree the terms and conditions");
+        }
+        else 
         {
-            console.log(error)
+            let agreementDetails = { contractDetails, deliveryLocation, buyerDetails, supplierDetails, productDetails }
+           
+            let response = await fetch('http://localhost:3000/contract/makeContract', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Attach the token in Authorization header
+                },
+                body: JSON.stringify(agreementDetails),
+            }
+            );
+
+            let data = await response.json();
+            console.log(data)
+
+            if (data.ok) {
+                alert('congragulations your contract has been made !!!')
+                console.log(data.message);
+                navigate('/buyer/buyerHome')
+            }
+            else {
+                console.log(data.error);
+                alert('error in making a contract please make sure that you fill all the required feilds')
+            }
+
         }
+
+
     }
- 
-    const getSupplierDetails= async (req,res)=>{
-        try{ console.log(supplierId)
-            const response = await fetch(`http://localhost:3000/supplier/getSupplierDetails?supplierId=${supplierId}`, { // Adjust the endpoint as necessary
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization
-              'Content-Type': 'application/json',
-            },
-        
-          });
+    useEffect(() => {
+        const getBuyerDetails = async (req, res) => {
+            try {
+                const response = await fetch('http://localhost:3000/buyer/getBuyerDetails', { // Adjust the endpoint as necessary
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization
+                        'Content-Type': 'application/json',
+                    },
+                });
 
-          if(!response.ok)
-            console.log("error in fetching supplier details"); 
-           let data= await response.json();
-           setSupplierDetails(data);
+                if (!response.ok)
+                    console.log("error in fetching buyer details");
+                let data = await response.json();
+
+                setBuyerDetails({
+                    name: data.name,                  // 'bhanu'
+                    id: data.buyerid,                 // '67040dd8046852bd45b2d1c4'
+                    email: data.email,                // 'bhanukiran280@gmail.com'
+                    contact: data.mobile,             // '9381553534'
+                    address: data.address,             // 'Uppal,Hyderabad,India'
+                });
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
-        catch(error)
-        {
-           // console.log(error)
+
+        const getSupplierDetails = async (req, res) => {
+            try {
+
+                const response = await fetch(`http://localhost:3000/supplier/getSupplierDetails?supplierId=${supplierId}`, { // Adjust the endpoint as necessary
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization
+                        'Content-Type': 'application/json',
+                    },
+
+                });
+
+                if (!response.ok)
+                    console.log("error in fetching supplier details");
+                let data = await response.json();
+                console.log(data);
+                setSupplierDetails(data);
+            }
+            catch (error) {
+                // console.log(error)
+            }
         }
-    }
-getBuyerDetails();
- getSupplierDetails();
-    
-  }, [])
-  
+
+
+        const getProductDetails = async (req, res) => {
+            const response = await fetch(`http://localhost:3000/product/getProductDetails?productId=${productId}`, { // Adjust the endpoint as necessary
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization
+                    'Content-Type': 'application/json',
+                },
+
+            })
+
+            let data = await response.json();
+
+
+            if (response.ok) {
+                setProductDetails({ price: data.productPrice, id: productId, name: data.productName, category: data.productCategory })
+
+            }
+
+
+        }
+
+
+        getBuyerDetails();
+        getSupplierDetails();
+        getProductDetails();
 
 
 
-
+    }, [])
 
 
 
     return (
-        <div className="container mx-auto my-10 p-6  shadow-lg flex flex-col gap-9 rounded-lg max-w-4xl">
+        <div className="container bg-slate-200  mx-auto my-10 p-6  shadow-lg flex flex-col gap-9 rounded-lg max-w-4xl">
             {/* Supplier Details */}
             <div className="border-b-2 border-gray-300 p-4 mb-6  bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Supplier Details</h2>
@@ -171,7 +247,7 @@ getBuyerDetails();
             </div>
 
             {/* Product Details */}
-            <div className="border-b-2 border-gray-300 p-4 mb-6  rounded-lg shadow-md">
+            <div className="border-b-2 border-gray-300 p-4 mb-6 bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Product Details</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -190,7 +266,7 @@ getBuyerDetails();
             </div>
 
             {/* Agreement Terms */}
-            <div className="border-b-2 border-gray-300 p-4 mb-6  rounded-lg shadow-md ">
+            <div className="border-b-2 border-gray-300 p-4 mb-6 bg-white  rounded-lg shadow-md ">
                 <h2 className="text-2xl font-bold mb-4">Agreement Terms & Conditions</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -199,18 +275,19 @@ getBuyerDetails();
                             type="date"
                             name="date"
                             value={contractDetails.date}
-                            onChange={handleInputChange}
+                            onChange={(e) => { handleInputChange(e) }}
+
                             className="border-b-2 border-gray-300 w-full"
                         />
                     </div>
                     <div>
                         <label className="block font-semibold">Period:</label>
                         <input
-                            type="text"
+                            type="Number"
                             name="period"
                             value={contractDetails.period}
-                            onChange={handleInputChange}
-                            placeholder="e.g., 6 months"
+                            onChange={(e) => { handleInputChange(e) }}
+                            placeholder="e.g., In months olny"
                             className="border-b-2 border-gray-300 w-full"
                         />
                     </div>
@@ -220,7 +297,7 @@ getBuyerDetails();
                             type="text"
                             name="paymentType"
                             value={contractDetails.paymentType}
-                            onChange={handleInputChange}
+                            onChange={(e) => { handleInputChange(e) }}
                             placeholder="e.g., Net 30 days"
                             className="border-b-2 border-gray-300 w-full"
                         />
@@ -231,7 +308,7 @@ getBuyerDetails();
                             type="text"
                             name="paymentMode"
                             value={contractDetails.paymentMode}
-                            onChange={handleInputChange}
+                            onChange={(e) => { handleInputChange(e) }}
                             placeholder="e.g., Bank Transfer"
                             className="border-b-2 border-gray-300 w-full"
                         />
@@ -243,13 +320,13 @@ getBuyerDetails();
                 <h2 className="text-2xl font-bold mb-4">Delivery Location</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <label className="block font-semibold">House Number:</label>
+                        <label className="block font-semibold"> Restraunt Name:</label>
                         <input
                             type="text"
-                            name="houseNumber"
+                            name="name"
                             value={deliveryLocation.houseNumber}
-                            onChange={handleInputChange}
-                            placeholder="House Number"
+                            onChange={(e) => { handleInputChange(e) }}
+                            placeholder=" eg .marriot bonvoy hotel"
                             className="border-b-2 border-gray-300 w-full"
                         />
                     </div>
@@ -259,7 +336,7 @@ getBuyerDetails();
                             type="text"
                             name="area"
                             value={deliveryLocation.area}
-                            onChange={handleInputChange}
+                            onChange={(e) => { handleInputChange(e) }}
                             placeholder="Area"
                             className="border-b-2 border-gray-300 w-full"
                         />
@@ -270,7 +347,7 @@ getBuyerDetails();
                             type="text"
                             name="city"
                             value={deliveryLocation.city}
-                            onChange={handleInputChange}
+                            onChange={(e) => { handleInputChange(e) }}
                             placeholder="City"
                             className="border-b-2 border-gray-300 w-full"
                         />
@@ -281,7 +358,7 @@ getBuyerDetails();
                             type="text"
                             name="state"
                             value={deliveryLocation.state}
-                            onChange={handleInputChange}
+                            onChange={(e) => { handleInputChange(e) }}
                             placeholder="State"
                             className="border-b-2 border-gray-300 w-full"
                         />
@@ -292,7 +369,7 @@ getBuyerDetails();
                             type="text"
                             name="pincode"
                             value={deliveryLocation.pincode}
-                            onChange={handleInputChange}
+                            onChange={(e) => { handleInputChange(e) }}
                             placeholder="Pincode"
                             className="border-b-2 border-gray-300 w-full"
                         />
@@ -301,7 +378,7 @@ getBuyerDetails();
             </div>
 
             {/* Signatures */}
-            <div className="p-4 mb-6 rounded-lg shadow-lg ">
+            <div className="p-4 mb-6 rounded-lg shadow-lg bg-white">
                 <h2 className="text-2xl font-bold mb-4">Signatures</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -310,6 +387,7 @@ getBuyerDetails();
                             type="text"
                             placeholder="Sign here"
                             className="border-b-2 border-gray-300 w-full"
+
                         />
                     </div>
                     <div>
@@ -318,10 +396,25 @@ getBuyerDetails();
                             type="text"
                             placeholder="Sign here"
                             className="border-b-2 border-gray-300 w-full"
+                            value={supplierDetails.name}
+                            disabled
                         />
                     </div>
                 </div>
             </div>
+
+            <div className="checkbox flex gap-4">
+                <input type="checkbox" className='p-3 m-2' checked={isChecked}
+                    onChange={handleCheckboxChange} />
+                <div>On clicking this check this check box it is equivalnet to signing the agreement  </div>
+            </div>
+
+
+
+            <div onClick={handleSubmit} className="p-4 mb-6 rounded-lg shadow-lg bg-blue-300 hover:bg-blue-400 hover:transition">
+                <button onClick={handleSubmit}> Submit</button>
+            </div>
+
         </div>
     );
 };
