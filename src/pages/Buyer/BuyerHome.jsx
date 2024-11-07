@@ -64,7 +64,7 @@ const BuyerHome = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
         {filteredOrders.length > 0 ? (
           filteredOrders.map((order) => (
-            <div key={order._id} className="bg-white shadow-md border-2 border-gray-200 p-2 rounded-lg overflow-hidden flex flex-col">
+            <div key={order._id} className="bg-white shadow-md border-2 border-gray-300 p-2 rounded-lg overflow-hidden flex flex-col">
               <img
                 src={prod_img[order.productCategory][order.productName]}
                 alt={order.productName}

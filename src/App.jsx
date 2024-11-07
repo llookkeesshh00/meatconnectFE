@@ -34,6 +34,15 @@ function App() {
   const [logged, setLogged] = useState(false);
   const [role, setrole] = useState('')
   const location = useLocation();
+  let checkSession=()=>{
+     if(!location.getItem('token'))
+     {   
+         window.location.href = '/'; 
+     }
+  }
+  
+  
+  setInterval(checkSession, 60000);
 
   useEffect(() => {
     const role = localStorage.getItem('role')
