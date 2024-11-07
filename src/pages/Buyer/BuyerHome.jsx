@@ -5,10 +5,40 @@ import prod_img from '../../assets/source_img';
 
 const BuyerHome = () => {
   const [orders, setOrders] = useState([]);
+  const [buyerorders,setBuyerorders]=useState([]);
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
   const navigate = useNavigate();
 
   useEffect(() => {
+   
+   
+    const fetchContractOrders = async ()=>{
+      try {
+        const response = await fetch('http://localhost:3000/buyer/getBuyerProdcuts', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+
+        const data = await response.json();
+        console.log(data.newarr);
+        setBuyerorders(data.newarr);
+
+      }
+        catch (error) {
+          console.error('Error fetching orders:', error);
+        }
+
+    }
+
+
     const fetchOrders = async () => {
       try {
         const response = await fetch('http://localhost:3000/buyer/getAllProducts', {
@@ -32,6 +62,7 @@ const BuyerHome = () => {
     };
 
     fetchOrders();
+    fetchContractOrders();
   }, []);
 
   // Handle negotiation click
@@ -41,11 +72,13 @@ const BuyerHome = () => {
   };
 
   // Filter orders based on search query
-  const filteredOrders = orders.filter(order =>
-    order.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    order.productCategory.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
+  const filteredOrders = orders.filter(order => {
+    
+    return !buyerorders.includes(order._id) && (
+      order.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      order.productCategory.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
   return (
     <div className="flex flex-col items-center m-3">
       <div className='flex gap-26 justify-evenly w-full'>

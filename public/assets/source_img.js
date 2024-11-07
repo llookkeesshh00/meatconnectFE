@@ -3,7 +3,7 @@
 const productImageUrls = {
     chicken: {
       'whole breast': '/src/assets/chicken_whole_breast.jpg',
-      'breast with ribs': '/src/assets/chicken_breast_with_ribs.jpg',
+      'breast with ribs': '/src/assets/chicken_whole_breast_with_ribs.jpg',
       'boneless breast': '/src/assets/chicken_boneless_breast.jpg',
       'tenderloin': '/src/assets/chicken_tenderloin.jpg',
       'whole leg': '/src/assets/chicken_whole_leg.jpg',

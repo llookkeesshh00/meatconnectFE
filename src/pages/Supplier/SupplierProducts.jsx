@@ -24,10 +24,10 @@ const SupplierProducts = () => {
     fetchProducts();
   }, []);
 
-  // Handle Delete Product
+
   const handleDelete = async (productId) => {
     try {
-      const res = await fetch(`http://localhost:3000/supplier/deleteProduct/${productId}`, {
+      const res = await fetch(`http://localhost:3000/product/deleteProduct/${productId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include the JWT token
@@ -35,7 +35,7 @@ const SupplierProducts = () => {
         },
       });
       if (res.ok) {
-        // Remove the deleted product from the state
+        
         setProducts(Products.filter(product => product._id !== productId));
       } else {
         console.error('Failed to delete the product');
@@ -78,7 +78,7 @@ const SupplierProducts = () => {
                   <td className="px-6 py-4">${product.price}</td>
                   <td className="px-6 py-4">
                     <button
-                      className="bg-red-500 text-white px-4 py-2 rounded hover:shadow-md hover:bg-red-400"
+                      className="bg-gray-200 font-bold text-gray px-4 py-2 rounded transition-all  hover:bg-red-500 hover:text-white  duration-500 hover:shadow-md"
                       onClick={() => handleDelete(product._id)}
                     >
                       Delete
