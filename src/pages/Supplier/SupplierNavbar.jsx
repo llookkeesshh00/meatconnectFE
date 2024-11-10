@@ -39,12 +39,12 @@ const SupplierNavbar = () => {
                 </div>
 
                 <div
-                    onClick={() => { navigate('/supplierhelp') }}
+                    onClick={() => { navigate('/supplierDelivery') }}
                     className="item flex gap-6 p-2 hover:bg-purple-200 hover:rounded-lg hover:shadow-md transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
                         <path d="M480-80-10-120h-10q-142 0-241-99t-99-241q0-142 99-241t241-99q71 0 132.5 26.5t108 73q46.5 46.5 73 108T800-540q0 75-24.5 144t-67 128q-42.5 59-101 107T480-80Zm80-146q71-60 115.5-140.5T720-540q0-109-75.5-184.5T460-800q-109 0-184.5 75.5T200-540q0 109 75.5 184.5T460-280h100v54Zm-101-95q17 0 29-12t12-29q0-17-12-29t-29-12q-17 0-29 12t-12 29q0 17 12 29t29 12Zm-29-127h60q0-30 6-42t38-44q18-18 30-39t12-45q0-51-34.5-76.5T460-720q-44 0-74 24.5T344-636l56 22q5-17 19-33.5t41-16.5q27 0 40.5 15t13.5 33q0 16-7 27.5T466-566q-32 27-39 46t-7 58Z" />
                     </svg>
-                    <div className="text font-semibold text-purple-500"> Help </div>
+                    <div className="text font-semibold text-purple-500"> your Deliveries </div>
                 </div>
             </div>
         </div>

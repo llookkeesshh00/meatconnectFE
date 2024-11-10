@@ -56,13 +56,12 @@ const BuyerAddress = () => {
                 <td className="p-4">{address.buyer}</td>
                 <td className="p-4">
                   <button
-                    className="px-4 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-                    onClick={() => handleEdit(address._id)}
-                  >
+                    className="px-4 py-2 mr-2 bg-gray-200 shadow-lg text-gray-800 rounded hover:bg-blue-600 hover:text-white  hover:duration-500  hover:transition-all  transition-colors"
+                    onClick={() => handleEdit(address._id)}>
                     Edit
                   </button>
                   <button
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                    className="px-4 py-2 mr-2 bg-gray-200 text-gray-800 shadow-lg rounded hover:bg-red-500 hover:text-white  hover:duration-500  hover:transition-all  transition-colors"
                     onClick={() => handleDelete(address._id)}
                   >
                     Delete

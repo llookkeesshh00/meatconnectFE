@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const BuyerTopNavbar = () => {
   const navigate = useNavigate();
 
-  const handleLogout=()=>{
+  const handleLogout = () => {
     localStorage.clear();
     navigate('/');
   }
@@ -14,14 +14,14 @@ const BuyerTopNavbar = () => {
       <div className="text-purple-900 text-xl font-bold">Hey Buyer!</div>
       <div className="flex gap-10">
         {/* Dashboard link */}
-        <div
+        <div 
           className="item flex items-center gap-1 transition-transform transform hover:scale-105 hover:shadow-md hover:bg-purple-50 p-2 rounded-md cursor-pointer"
-          
+
         >
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
             <path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z" />
           </svg>
-          <div className="text font-semibold text-purple-500 hover:text-purple-700 transition-colors">
+          <div  onClick={()=>{navigate('/buyerdashboard')}} className="text font-semibold text-purple-500 hover:text-purple-700 transition-colors" >
             Dashboard
           </div>
         </div>

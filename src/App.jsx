@@ -29,6 +29,8 @@ import BuyerDigitalContract from './pages/Buyer/BuyerDigitalContract';
 import SuccessMessage from './pages/success';
 import BuyerAddress from './pages/Buyer/BuyerAddress';
 import BuyerOrder from './pages/Buyer/BuyerOrder';
+import Buyerdashboard from './pages/Buyer/Buyerdashboard';
+import BuyerSummary from './pages/Buyer/BuyerSummary';
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -92,12 +94,12 @@ function App() {
               <Route path="/buyers" element={<Buyer />} />
               <Route path="/buyercontracts" element={<BuyerContracts />} />
               <Route path="/buyertracking" element={<BuyerTracking />} />
-
               <Route path="/buyerchathome" element={<BuyerChatHome />} />
               <Route path="/buyerverification" element={<BuyerVerification />} />
               <Route path="/buyerdigitalcontract" element={<BuyerDigitalContract />} />
               <Route path="/buyeraddresses" element={<BuyerAddress />} />
-
+              <Route path="/buyerdashboard" element={<Buyerdashboard />} />
+              <Route path="/buyersummary" element={<BuyerSummary />} />
               <Route path="/buyerOrder" element={<BuyerOrder />} />
 
 

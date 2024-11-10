@@ -19,6 +19,7 @@ const BuyerTracking = () => {
           // Assuming data has an `error` field for error details
           alert('Difficulty in fetching orders: ' + data.error);
         } else {
+          console.log(data.orders)
           setOrders(data.orders);
         }
       } catch (error) {
