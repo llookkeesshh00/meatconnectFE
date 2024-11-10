@@ -74,7 +74,7 @@ const BuyerOrder = () => {
             }
 
             alert('Order placed successfully!');
-            Navigate('/buyer/buyerhome')
+            Navigate('/buyersummary')
          
         } catch (error) {
             console.error("Error placing order:", error);

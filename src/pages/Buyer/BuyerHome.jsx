@@ -5,14 +5,14 @@ import prod_img from '../../assets/source_img';
 
 const BuyerHome = () => {
   const [orders, setOrders] = useState([]);
-  const [buyerorders,setBuyerorders]=useState([]);
+  const [buyerorders, setBuyerorders] = useState([]);
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
   const navigate = useNavigate();
 
   useEffect(() => {
-   
-   
-    const fetchContractOrders = async ()=>{
+
+
+    const fetchContractOrders = async () => {
       try {
         const response = await fetch('http://localhost:3000/buyer/getBuyerProdcuts', {
           method: 'GET',
@@ -32,9 +32,9 @@ const BuyerHome = () => {
         setBuyerorders(data.newarr);
 
       }
-        catch (error) {
-          console.error('Error fetching orders:', error);
-        }
+      catch (error) {
+        console.error('Error fetching orders:', error);
+      }
 
     }
 
@@ -73,28 +73,57 @@ const BuyerHome = () => {
 
   // Filter orders based on search query
   const filteredOrders = orders.filter(order => {
-    
+
     return !buyerorders.includes(order._id) && (
       order.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.productCategory.toLowerCase().includes(searchQuery.toLowerCase())
     );
   });
   return (
-    <div className="flex flex-col items-center m-3">
-      <div className='flex gap-26 justify-evenly w-full'>
-        <div className="text-3xl font-semibold mb-6">Available Products</div>
-
-        {/* Search Bar */}
+    <div className="flex flex-col  m-3 gap-10">
+      <div className='flex justify-between  w-full'>
+        <div className="text-3xl flex justify-between font-semibold mb-6 ml-56">Available Products</div>
         <input
           type="text"
           placeholder="Search products..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="mb-4 px-4 py-2 border rounded w-[500px] hover:shadow-md hover:border-gray-200"
+          className="mb-4 px-4 py-2 border rounded w-[350px] hover:shadow-md hover:border-gray-200"
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+      <div className='flex justify-start flex-col gap-3'>
+        <div className='text-3xl flex justify-start'>Search by Category </div>
+        <div className="imgsec flex gap-6 mt-6 rounded-full">
+          <img
+            src="/assets/chicken_vector2.jpg"
+            onClick={() => { setSearchQuery('chicken') }}
+            className={`w-40 h-40 rounded-full ${searchQuery === 'chicken' ? 'border-8 border-gray-300 transition-all duration-500' : ''}`}
+            alt="chicken"
+          />
+          <img
+            src="/assets/mutton_vector.jpg"
+            onClick={() => { setSearchQuery('mutton') }}
+            className={`w-40 h-40 rounded-full ${searchQuery === 'mutton' ? 'border-8 border-gray-300 transition-all duration-500' : ''}`}
+            alt="mutton"
+          />
+          <img
+            src="/assets/fish_vector.jpg"
+            onClick={() => { setSearchQuery('fish') }}
+            className={`w-40 h-40 rounded-full ${searchQuery === 'fish' ? 'border-8 border-gray-300 transition-all duration-500' : ''}`}
+            alt="fish"
+          />
+        </div>
+
+
+
+
+      </div>
+
+
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full mt-14">
+
         {filteredOrders.length > 0 ? (
           filteredOrders.map((order) => (
             <div key={order._id} className="bg-white shadow-md border-2 border-gray-300 p-2 rounded-lg overflow-hidden flex flex-col">
