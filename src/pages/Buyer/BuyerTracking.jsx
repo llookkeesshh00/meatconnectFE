@@ -24,7 +24,7 @@ const BuyerTracking = () => {
         }
       } catch (error) {
         console.error('Error fetching orders:', error);
-        alert('An error occurred while fetching orders');
+        alert('An error occurred while fetching orders'+data.message);
       }
     };
 

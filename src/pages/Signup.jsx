@@ -9,7 +9,7 @@ const Signup = ({ role, switchToLogin }) => {
     name: '',
     mobile: '',
     companyName: '',
-    address: ''
+    
   });
 
   const handleInputChange = (e) => {
@@ -130,15 +130,7 @@ const Signup = ({ role, switchToLogin }) => {
               className="mb-4 p-2 w-full border"
               required
             />
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleInputChange}
-              placeholder="Suppliers Business Address"
-              className="mb-4 p-2 w-full border"
-              required
-            />
+           
            
           </div>
         )}

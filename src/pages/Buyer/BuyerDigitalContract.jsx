@@ -47,6 +47,7 @@ const BuyerDigitalContract = () => {
         period: 0,
         paymentType: '',
         paymentMode: '',
+        estimated_quantity: 0,
     });
 
 
@@ -75,10 +76,10 @@ const BuyerDigitalContract = () => {
         if (!isChecked) {
             alert("please click on the checkbox to agree the terms and conditions");
         }
-        else 
-        {
+        else {
+            
             let agreementDetails = { contractDetails, deliveryLocation, buyerDetails, supplierDetails, productDetails }
-           
+            console.log(agreementDetails)
             let response = await fetch('http://localhost:3000/contract/makeContract', {
                 method: 'POST',
                 headers: {
@@ -88,14 +89,14 @@ const BuyerDigitalContract = () => {
                 body: JSON.stringify(agreementDetails),
             }
             );
-
+         
             let data = await response.json();
             console.log(data)
 
             if (data.ok) {
                 alert('congragulations your contract has been made !!!')
                 console.log(data.message);
-                navigate('/buyer/buyerHome')
+                navigate('/buyercontracts')
             }
             else {
                 console.log(data.error);
@@ -192,7 +193,8 @@ const BuyerDigitalContract = () => {
 
     return (
         <div className="container bg-slate-200  mx-auto my-10 p-6  shadow-lg flex flex-col gap-9 rounded-lg max-w-4xl">
-            {/* Supplier Details */}
+            {/* Supplier Details */} 
+            <strong className='text-xllg text-red-500'>NOTE: SUPPLIER WILL NEGOTIATE AND AFTER CONFIRMATION CONTRACT WILL BE MADE !!  </strong>
             <div className="border-b-2 border-gray-300 p-4 mb-6  bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Supplier Details</h2>
                 <div className="grid grid-cols-2 gap-4">
@@ -281,7 +283,7 @@ const BuyerDigitalContract = () => {
                         />
                     </div>
                     <div>
-                        <label className="block font-semibold">Period:</label>
+                        <label className="block font-semibold">Period:(in months)</label>
                         <input
                             type="Number"
                             name="period"
@@ -310,6 +312,17 @@ const BuyerDigitalContract = () => {
                             value={contractDetails.paymentMode}
                             onChange={(e) => { handleInputChange(e) }}
                             placeholder="e.g., Bank Transfer"
+                            className="border-b-2 border-gray-300 w-full"
+                        />
+                    </div>
+                    <div>
+                        <label className="block font-semibold">Estimated quantity(kg/week):</label>
+                        <input
+                            type="Number"
+                            name="estimated_quantity"
+                            value={contractDetails.estimated_quantity}
+                            onChange={(e) => { handleInputChange(e) }}
+                            placeholder="100kg /week"
                             className="border-b-2 border-gray-300 w-full"
                         />
                     </div>
@@ -403,10 +416,13 @@ const BuyerDigitalContract = () => {
                 </div>
             </div>
 
-            <div className="checkbox flex gap-4">
-                <input type="checkbox" className='p-3 m-2' checked={isChecked}
-                    onChange={handleCheckboxChange} />
-                <div>On clicking this check this check box it is equivalnet to signing the agreement  </div>
+            <div className="checkbox flex flex-col justify-start  gap-4">
+                <div className='flex'>
+                    <input type="checkbox" className='p-3 m-2' checked={isChecked}
+                        onChange={handleCheckboxChange} />
+                    <div>On clicking this check this check box it is equivalnet to signing the agreement  </div>
+                </div>
+               
             </div>
 
 
