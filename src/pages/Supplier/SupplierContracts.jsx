@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import prod_img from '../../assets/source_img';
 import { useNavigate } from 'react-router-dom';
 import { useContract } from '../../contexts/ContractContext';
+import { toast } from 'react-toastify';
 
 const SupplierContracts = () => {
   const navigate = useNavigate();
@@ -85,9 +86,11 @@ const SupplierContracts = () => {
 
 
     if (data.ok) {
+      toast.success('contract accepted sucessfully!')
       navigate(0)
     }
     else {
+      toast.error('contract unable to accept!')
       console.log(data.error);
 
 

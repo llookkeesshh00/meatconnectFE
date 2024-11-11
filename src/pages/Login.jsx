@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = ({ role, switchToSignup,terminate }) => {
   const navigate= useNavigate();
@@ -35,15 +36,17 @@ const Login = ({ role, switchToSignup,terminate }) => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', data.role);
         localStorage.setItem('name', data.name);
-        console.log(data);
+       
         terminate();
         navigate(`/${data.role}/${data.role}Home`)
 
-        alert('Login successful');
+        toast.success('login succesful')
       } else {
+        toast.error(data.error)
         setErrorMessage(data.error);
       }
     } catch (err) {
+      toast.error(data.error)
       setErrorMessage('Login failed. Please try again.'+err);
       console.error('Error during login:', err);
     }
@@ -73,7 +76,7 @@ const Login = ({ role, switchToSignup,terminate }) => {
             className="p-2 border"
             required
           />
-          <button type="submit" className="bg-purple-600 mt-5 mb-5 text-white p-2 w-full hover:bg-purple-500">
+          <button type="submit" className="bg-gray-100 text-gray-700 hover:bg-purple-600 mt-5 mb-5 transition-all duration-700 hover:text-white font-semibold px-4 py-2 rounded-md">
             Submit
           </button>
         </form>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import prod_img from '../../assets/source_img';
+import { toast } from 'react-toastify';
 
 const BuyerHome = () => {
   const [orders, setOrders] = useState([]);
@@ -68,6 +69,7 @@ const BuyerHome = () => {
   // Handle negotiation click
   const handleNegotiate = (productId, supplierId) => {
     console.log(`Starting negotiation for order ID: ${productId}  ${supplierId}`);
+    toast.success('navigating to contract creation please please wait')
     navigate('/buyerdigitalcontract', { state: { productId, supplierId } });
   };
 
@@ -98,19 +100,19 @@ const BuyerHome = () => {
           <img
             src="/assets/chicken_vector2.jpg"
             onClick={() => { setSearchQuery('chicken') }}
-            className={`w-40 h-40 rounded-full ${searchQuery === 'chicken' ? 'border-8 border-gray-300 transition-all duration-500' : ''}`}
+            className={`w-40 h-40 rounded-full ${searchQuery === 'chicken' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
             alt="chicken"
           />
           <img
             src="/assets/mutton_vector.jpg"
             onClick={() => { setSearchQuery('mutton') }}
-            className={`w-40 h-40 rounded-full ${searchQuery === 'mutton' ? 'border-8 border-gray-300 transition-all duration-500' : ''}`}
+            className={`w-40 h-40 rounded-full ${searchQuery === 'mutton' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
             alt="mutton"
           />
           <img
             src="/assets/fish_vector.jpg"
             onClick={() => { setSearchQuery('fish') }}
-            className={`w-40 h-40 rounded-full ${searchQuery === 'fish' ? 'border-8 border-gray-300 transition-all duration-500' : ''}`}
+            className={`w-40 h-40 rounded-full ${searchQuery === 'fish' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
             alt="fish"
           />
         </div>

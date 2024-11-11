@@ -89,7 +89,6 @@ const BuyerVerification = () => {
           </select>
         </div>
 
-        {/* CIN (optional, if registered company) */}
         <div className="mb-4">
           <label className="block text-gray-700">CIN (Company Identification Number)</label>
           <input

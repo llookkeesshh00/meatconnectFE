@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import prod_img from '../../assets/source_img';
 import { useNavigate } from 'react-router-dom';
 import { useContract } from '../../contexts/ContractContext';
+import { toast } from 'react-toastify';
 
 const BuyerOrder = () => {
     const Navigate= useNavigate();
@@ -73,12 +74,12 @@ const BuyerOrder = () => {
                 throw new Error('Failed to place order');
             }
 
-            alert('Order placed successfully!');
+            toast.success('Order placed successfully!');
             Navigate('/buyersummary')
          
         } catch (error) {
             console.error("Error placing order:", error);
-            alert("There was an error placing your order.");
+            toast.error("There was an error placing your order.");
         }
     };
 

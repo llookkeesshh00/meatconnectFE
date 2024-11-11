@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import prod_img from '../../assets/source_img';
+import { toast } from 'react-toastify';
 const BuyerTracking = () => {
   const [orders, setOrders] = useState([]);
 
@@ -17,14 +18,14 @@ const BuyerTracking = () => {
 
         if (!data.ok) {
           // Assuming data has an `error` field for error details
-          alert('Difficulty in fetching orders: ' + data.error);
+          toast.error('Difficulty in fetching orders: ' + data.error);
         } else {
           console.log(data.orders)
           setOrders(data.orders);
         }
       } catch (error) {
         console.error('Error fetching orders:', error);
-        alert('An error occurred while fetching orders'+data.message);
+        toast.error('An error occurred while fetching orders'+data.message);
       }
     };
 

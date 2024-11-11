@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SupplierHome = () => {
   const navigate = useNavigate();
@@ -7,21 +8,21 @@ const SupplierHome = () => {
   
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-00  " style={{ 
-      backgroundImage: `url("/assets/supplierHome.jpeg")` ,backgroundRepeat: 'no-repeat',
+    <div className="flex justify-center items-center h-screen bg-gray-00 m-2" style={{ 
+      backgroundImage: `url("/assets/image3.jpg")` ,backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
       backgroundPosition: 'center' }}>
-      <div className="bg-white shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-bold text-center mb-4">
+      <div className=" shadow-lg rounded-lg p-8">
+        <h2 className="text-4xl font-bold text-purple  text-center mb-4">
           Welcome, Supplier!
         </h2>
-        <p className="text-center text-gray-600 mb-6">
+        <p className="text-center text-purple text-xl  mb-6">
           Upload your orders and contracts to manage them efficiently.
         </p>
         <div className="text-center">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-           onClick={()=>{navigate('/supplieruploadproducts')}}
+            className="bg-gray-100 text-gray-700 hover:bg-blue-600 transition-all duration-700 hover:text-white font-semibold px-4 py-2 rounded-md"
+           onClick={()=>{navigate('/supplieruploadproducts');toast.success('navigating to upload section');}}
           >
             Upload Orders
           </button>

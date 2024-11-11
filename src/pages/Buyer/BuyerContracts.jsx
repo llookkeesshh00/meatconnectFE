@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import prod_img from '../../assets/source_img';
 import { useNavigate } from 'react-router-dom';
 import { useContract } from '../../contexts/ContractContext';
+import { toast } from 'react-toastify';
 const BuyerContracts = () => {
   const navigate = useNavigate();
   const [contracts, setcontracts] = useState([]);
@@ -71,6 +72,7 @@ const BuyerContracts = () => {
     console.log(contract)
     if (contract) {
       console.log(contract)
+      toast.success('navigating to orders page..')
       setContract(contract);
       navigate('/buyerOrder')
     }

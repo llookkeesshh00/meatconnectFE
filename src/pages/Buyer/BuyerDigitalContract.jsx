@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 const BuyerDigitalContract = () => {
     let date = new Date();
     const navigate = useNavigate();
@@ -94,13 +94,13 @@ const BuyerDigitalContract = () => {
             console.log(data)
 
             if (data.ok) {
-                alert('congragulations your contract has been made !!!')
+                toast.success('contract has been notified to supplier ')
                 console.log(data.message);
                 navigate('/buyercontracts')
             }
             else {
                 console.log(data.error);
-                alert('error in making a contract please make sure that you fill all the required feilds')
+                toast.error('error in making a contract please make sure that you fill all the required fields')
             }
 
         }

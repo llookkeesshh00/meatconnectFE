@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { useRef, useEffect } from 'react';
 import './App.css';
 import { useState } from 'react';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import NavBar from './components/Navbar';
 import HomePage from './pages/Home';
 import Supplier from './pages/Supplier';
@@ -23,7 +24,6 @@ import SupplierProducts from './pages/Supplier/SupplierProducts';
 import SupplierContracts from './pages/Supplier/SupplierContracts';
 
 import SupplierNotifications from './pages/Supplier/SupplierNotifications';
-import BuyerChatHome from './pages/Buyer/BuyerChatHome';
 import BuyerVerification from './pages/Buyer/BuyerVerification';
 import BuyerDigitalContract from './pages/Buyer/BuyerDigitalContract';
 import SuccessMessage from './pages/success';
@@ -42,8 +42,8 @@ function App() {
   //        window.location.href = '/'; 
   //    }
   // }
-  
-  
+
+
   // setInterval(checkSession, 60000);
 
   useEffect(() => {
@@ -86,38 +86,38 @@ function App() {
         {logged && role == 'buyer' && <BuyerNavbar className="w-64 sticky" />}
         {logged && role == 'supplier' && <SupplierNavbar className="w-64 sticky" />}
         <div className=" w-full mx-auto overflow-y-auto">
-          
-            <Routes>
-              <Route path="/" element={<HomePage />} />
 
-              <Route path="/buyer/buyerHome" element={<BuyerHome />} />
-              <Route path="/buyers" element={<Buyer />} />
-              <Route path="/buyercontracts" element={<BuyerContracts />} />
-              <Route path="/buyertracking" element={<BuyerTracking />} />
-              <Route path="/buyerchathome" element={<BuyerChatHome />} />
-              <Route path="/buyerverification" element={<BuyerVerification />} />
-              <Route path="/buyerdigitalcontract" element={<BuyerDigitalContract />} />
-              <Route path="/buyeraddresses" element={<BuyerAddress />} />
-              <Route path="/buyerdashboard" element={<Buyerdashboard />} />
-              <Route path="/buyersummary" element={<BuyerSummary />} />
-              <Route path="/buyerOrder" element={<BuyerOrder />} />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+
+            <Route path="/buyer/buyerHome" element={<BuyerHome />} />
+            <Route path="/buyers" element={<Buyer />} />
+            <Route path="/buyercontracts" element={<BuyerContracts />} />
+            <Route path="/buyertracking" element={<BuyerTracking />} />
+            <Route path="/buyerverification" element={<BuyerVerification />} />
+            <Route path="/buyerdigitalcontract" element={<BuyerDigitalContract />} />
+            <Route path="/buyeraddresses" element={<BuyerAddress />} />
+            <Route path="/buyerdashboard" element={<Buyerdashboard />} />
+            <Route path="/buyersummary" element={<BuyerSummary />} />
+            <Route path="/buyerOrder" element={<BuyerOrder />} />
 
 
-              <Route path="/suppliers" element={<Supplier />} />
-              <Route path="/supplier/supplierHome" element={<SupplierHome />} />
-              <Route path='/supplieruploadproducts' element={<SupplierUploadProduct />} />
-              <Route path='/supplierproducts' element={<SupplierProducts />} />
-              <Route path='/suppliercontracts' element={<SupplierContracts />} />
-              <Route path="/suppliernotifications" element={<SupplierNotifications />} />
+            <Route path="/suppliers" element={<Supplier />} />
+            <Route path="/supplier/supplierHome" element={<SupplierHome />} />
+            <Route path='/supplieruploadproducts' element={<SupplierUploadProduct />} />
+            <Route path='/supplierproducts' element={<SupplierProducts />} />
+            <Route path='/suppliercontracts' element={<SupplierContracts />} />
+            <Route path="/suppliernotifications" element={<SupplierNotifications />} />
 
-              <Route path='/sucess' element={<SuccessMessage />} />
-              <Route path="/contracts" element={<Contracts />} />
-              <Route path="/about-us" element={<Aboutus />} />
+            <Route path='/sucess' element={<SuccessMessage />} />
+            <Route path="/contracts" element={<Contracts />} />
+            <Route path="/about-us" element={<Aboutus />} />
 
-            </Routes>
-          
+          </Routes>
+
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

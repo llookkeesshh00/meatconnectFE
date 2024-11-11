@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Signup = ({ role, switchToLogin }) => {
 
@@ -36,12 +37,14 @@ const Signup = ({ role, switchToLogin }) => {
       const data = await response.json();
       
       if (response.ok) {
+        toast.success('sign up sucessful!')
         console.log('Signup successful:', data);
         switchToLogin();
   
       }
       else 
-        {  console.error('Signup failed:', data);
+        { toast.error('sign up failed!') 
+          console.error('Signup failed:', data);
         }
     }
     
@@ -135,13 +138,13 @@ const Signup = ({ role, switchToLogin }) => {
           </div>
         )}
 
-        <button type="submit" className="bg-purple-600 text-white p-2 w-full">
+        <button type="submit" className="bg-gray-300 text-gray-700 hover:bg-purple-600 mt-5 mb-5 transition-all duration-700 hover:text-white font-semibold px-4 py-2 rounded-md w-full">
           Submit
         </button>
       </form>
       <div>
         <p>Already have an account?</p>
-        <button onClick={()=>{switchToLogin()}} className="text-purple-600 underline">
+        <button onClick={()=>{switchToLogin()}} className="bg-gray-300 text-gray-700 hover:bg-purple-600 mt-5 mb-5 transition-all duration-700 hover:text-white font-semibold px-4 py-2 rounded-md">
           Click here to log in
         </button>
       </div>

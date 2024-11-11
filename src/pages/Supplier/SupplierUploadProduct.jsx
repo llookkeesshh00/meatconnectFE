@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SupplierUploadProduct = () => {
   const navigate = useNavigate();
@@ -66,18 +67,19 @@ const fishOptions = [
 
       if (res.ok) {
         setMessage('Product uploaded successfully!');
-        alert('product uploaded sucessfully');
+        toast.success('product uploaded sucessfully');
         setFormData({
           productCategory: '',
           productName: '',
           price: ''})
           
       } else {
-        setMessage(data.error || 'Failed to upload product.');
+        toast.error(data.error || 'Failed to upload product.');
       }
     } catch (error) {
       console.error('Error uploading product:', error);
       setMessage('An error occurred while uploading the product.');
+      toast.error('An error occurred while uploading the product.')
     }
   };
 
@@ -145,7 +147,7 @@ const fishOptions = [
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
+            className="bg-gray-300 text-gray-700 hover:bg-blue-600 transition-all duration-700 hover:text-white font-semibold px-4 py-2 rounded-md"
           >
             Upload Product
           </button>

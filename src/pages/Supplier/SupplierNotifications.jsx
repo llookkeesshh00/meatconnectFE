@@ -53,7 +53,7 @@ const SupplierNotifications = () => {
               </div>
             ))}
             <button
-              onClick={() => navigate('/suppliercontracts')}
+              onClick={() =>{ navigate('/suppliercontracts');toast.success('navigating to contract handling page')}}
               className="w-full py-2 mt-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
             >
               View All Contracts
