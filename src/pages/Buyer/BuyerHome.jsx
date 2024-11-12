@@ -134,12 +134,13 @@ const BuyerHome = () => {
                 alt={order.productName}
                 className="h-48 w-full object-cover"
               />
-              <div className="p-4 flex-1 gap-10">
+              <div className="p-4 flex-1 gap-14">
                 <h2 className="text-2xl font-semibold">{order.productCategory}</h2>
                 <h2 className="text-md font-semibold">{order.productName}</h2>
                 <p className="text-gray-600">{order.description}</p>
                 <p className="text-xl font-bold">{`Rs ${order.price} /Kg`}</p>
-                <p className="text-sm text-gray-500">From: {order.supplier.companyName}</p>
+                <p className="text-md text-gray-">From: {order.supplier.companyName}</p>
+                <p className="text-md text-gray-">Location:{order.supplier.address}</p>
               </div>
               <div className="p-4">
                 <button

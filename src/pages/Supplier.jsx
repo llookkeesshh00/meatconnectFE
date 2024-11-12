@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const Supplier = () => {
   const Navigate= useNavigate();
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container bg-gray-100 mx-auto px-4 py-16">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Supplier's Role</h2>
       <p className="text-lg text-gray-700 mb-8">
         In this platform, suppliers, primarily meat producers and distributors, play a crucial role in providing high-quality meat products to buyers. Here are their key responsibilities:
