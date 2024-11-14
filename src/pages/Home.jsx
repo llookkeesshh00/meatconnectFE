@@ -25,28 +25,29 @@ const HomePage = () => {
           Explore Features
         </Link>
       </section> */}
-
-      <section className="p-16 ">
+      <section className="p-16">
         <div className="container mx-auto text-center">
           <h3 className="text-2xl font-bold mb-8">Why Choose Us!</h3>
           <div className="flex flex- justify-center">
-            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4">
+            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4 hover:scale-105 hover:shadow-2xl transition-transform duration-500">
               <img src="./assets/h1.jpg" alt="High-Quality Meat Products" className="mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2">High-Quality Meat Products</h4>
-              <p className="text-gray-700">We provide premium quality meat sourced directly from trusted suppliers which are verifed according to food safety regulations by GOVT of India</p>
+              <p className="text-gray-700">We provide premium quality meat sourced directly from trusted suppliers verified according to food safety regulations by the GOVT of India.</p>
             </div>
 
-            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4">
+            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4 hover:scale-105 hover:shadow-2xl transition-transform duration-500">
               <img src="./assets/h3.jpg" alt="Automated Billing" className="mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2">Automation of Bills at the End of Each Month</h4>
               <p className="text-gray-700">Enjoy automated, transparent billing processes that ensure timely, accurate invoicing every month.</p>
             </div>
-            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4">
+
+            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4 hover:scale-105 hover:shadow-2xl transition-transform duration-500">
               <img src="./assets/h2.jpg" alt="Efficient Contract Management" className="mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2">Efficient Contract Management and Payments</h4>
               <p className="text-gray-700">Our system streamlines contract handling and offers seamless, secure payment options for your convenience.</p>
             </div>
-            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4">
+
+            <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4 hover:scale-105 hover:shadow-2xl transition-transform duration-500">
               <img src="./assets/h4.jpg" alt="Reliable Delivery" className="mx-auto mb-4 h-[45vh]" />
               <h4 className="text-xl font-semibold mb-2">Timely and Reliable Delivery</h4>
               <p className="text-gray-700">We guarantee prompt and dependable delivery to meet your business requirements.</p>
@@ -54,6 +55,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
 
       {/* How It Works Section */}
       <section className="p-16 ">
@@ -64,19 +66,19 @@ const HomePage = () => {
               <img src="./assets/explore.png" alt="Explore Contracts" className="mx-auto mb-4" /> {/* Dummy image */}
               <h4 className="text-xl font-semibold mb-2">Explore Contracts</h4>
               <p className="text-gray-700">Browse through a variety of contracts tailored to your needs.</p>
-              <Link  onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">Learn More</Link>
+              <Link onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">Learn More</Link>
             </div>
             <div className="bg-white p-4 shadow-2xl">
               <img src="./assets/select.png" alt="Select Contract" className="mx-auto mb-4" /> {/* Dummy image */}
               <h4 className="text-xl font-semibold mb-2">Select Contract</h4>
               <p className="text-gray-700">Choose the best contract that suits your business requirements.</p>
-              <Link  onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">View Options</Link>
+              <Link onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">View Options</Link>
             </div>
             <div className="bg-white p-4 shadow-2xl">
               <img src="./assets/delivery.png" alt="Take Delivery" className="mx-auto mb-4" /> {/* Dummy image */}
               <h4 className="text-xl font-semibold mb-2">Take Delivery</h4>
               <p className="text-gray-700">Efficient and timely delivery as per the contract terms.</p>
-              <Link  onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">Track Delivery</Link>
+              <Link onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">Track Delivery</Link>
             </div>
           </div>
         </div>
@@ -86,7 +88,7 @@ const HomePage = () => {
       <section className="py-16 text-center">
         <h2 className="text-3xl font-bold text-purple-500">Join Today!</h2>
         <p className="m-4 text-gray-700">Connect with fellow meat lovers and explore exclusive deals and community events.</p>
-        <Link  onClick={() => { toast.error('please sign up') }} className="bg-gray-100 text-gray-700 hover:bg-purple-600 transition-all duration-700 hover:text-white font-semibold px-4 py-2 rounded-md">
+        <Link onClick={() => { toast.error('please sign up') }} className="bg-gray-100 text-gray-700 hover:bg-purple-600 transition-all duration-700 hover:text-white font-semibold px-4 py-2 rounded-md">
           Buy and Connect
         </Link>
       </section>

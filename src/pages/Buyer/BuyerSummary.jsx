@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import prod_img from '../../assets/source_img';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const getMonthName = (month) => {
     const date = new Date(`${month}-01`);
@@ -23,7 +25,7 @@ const BuyerSummary = () => {
 
                 if (response.ok) {
                     let data = await response.json();
-                    console.log(data)
+                    console.log(data);
                     setSummary(data.ordersByMonth || {}); // Set the fetched data to the state
                 } else {
                     console.error("Failed to fetch summary");
@@ -36,19 +38,28 @@ const BuyerSummary = () => {
         fetchSummary();
     }, []);
 
-    const handleSeeDetails = (month) => {
-        alert(`Details for ${month}: ${JSON.stringify(summary[month], null, 2)}`);
-    };
+    const handlePayment = async (amount) => {
+        try {
+            // Step 1: Create an order
+            const orderResponse = await axios.post(
+                'http://localhost:3000/summary/create-order',
+                { amount },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include token if needed
+                    },
+                }
+            );
+            const { id } = orderResponse.data;
 
-    const handleGenerateInvoice = (month) => {
-        alert(`Invoice for ${month} generated`);
-    };
+            // Step 2: Redirect to PayPal for payment approval
+            window.location.href = `https://www.sandbox.paypal.com/checkoutnow?token=${id}`;
 
-
-    const handleStatusChange = (orderId, newStatus) => {
-
-
-
+            // Note: Code after this will not execute until the user returns from PayPal.
+        } catch (error) {
+            toast.error('An error occurred with the payment. Please try again.');
+            console.error(error);
+        }
     };
 
     return (
@@ -70,7 +81,7 @@ const BuyerSummary = () => {
                                 <thead>
                                     <tr className="bg-gray-200">
                                         <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Image</th>
-                                        <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product category</th>
+                                        <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Category</th>
                                         <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Name</th>
                                         <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Quantity</th>
                                         <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Total Price</th>
@@ -101,15 +112,14 @@ const BuyerSummary = () => {
                                             <td className="px-6 py-3">
                                                 <button
                                                     className="bg-blue-600 text-white p-2 font-bold rounded-lg hover:bg-blue-700 transition-all duration-300"
-                                                    onClick={() => handleSeeDetails(month)}
+                                                    onClick={() => handlePayment(order.quantity * order.product_id.price)}
                                                 >
-                                                    Make payment
+                                                    Make Payment
                                                 </button>
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
-
                             </table>
                             <div className="mt-4 flex justify-end text-lg">
                                 <p>Total Quantity: {totalQuantity} | Total Price: {totalPrice}</p>
