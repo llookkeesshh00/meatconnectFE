@@ -1,7 +1,7 @@
 const prod_img = {
     chicken: {
       'whole breast': '/assets/chicken_whole_breast.jpeg',
-      'breast with ribs': '/assets/chicken_breast_with_ribs.jpeg',
+      'breast with ribs': '/assets/chicken_boneless_breast.jpeg',
       'boneless breast': '/assets/chicken_boneless_breast.jpeg',
       'tenderloin': '/assets/chicken_tenderloin.jpeg',
       'whole leg': '/assets/chicken_whole_leg.jpeg',
