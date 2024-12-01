@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const Signup = ({ role, switchToLogin }) => {
 
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const Signup = ({ role, switchToLogin }) => {
     
     try {
       // Send a POST request to the signup endpoint
-      const response = await fetch('http://localhost:3000/auth/signup', {
+      const response = await fetch(`${apiUrl}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

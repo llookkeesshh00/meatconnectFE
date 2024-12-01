@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 import prod_img from '../../assets/source_img';
 import { toast } from 'react-toastify';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const BuyerHome = () => {
   const [orders, setOrders] = useState([]);
@@ -15,7 +15,7 @@ const BuyerHome = () => {
 
     const fetchContractOrders = async () => {
       try {
-        const response = await fetch('http://localhost:3000/buyer/getBuyerProdcuts', {
+        const response = await fetch(`${apiUrl}/buyer/getBuyerProdcuts`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -42,7 +42,7 @@ const BuyerHome = () => {
 
     const fetchOrders = async () => {
       try {
-        const response = await fetch('http://localhost:3000/buyer/getAllProducts', {
+        const response = await fetch(`${apiUrl}/buyer/getAllProducts`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,

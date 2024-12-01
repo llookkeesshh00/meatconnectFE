@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import prod_img from '../../assets/source_img';
 import { toast } from 'react-toastify';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
+
 const BuyerTracking = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const getOrders = async () => {
       try {
-        let res = await fetch('http://localhost:3000/orders/getOrders', {
+        let res = await fetch(`${apiUrl}/orders/getOrders`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

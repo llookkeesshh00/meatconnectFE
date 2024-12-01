@@ -10,7 +10,7 @@ const prod_img = {
       'drumstick': '/assets/chicken_drumstick.jpeg',
       'wing drumette': '/assets/chicken_wing_drumette.jpeg',
       'whole wing': '/assets/chicken_whole_wing.jpeg',
-      'back': '/assets/chicken_back.jpeg',
+      'back': '/assets/chicken_bcak.jpeg',
       'paws': '/assets/chicken_paws.jpeg',
       'gizzard': '/assets/chicken_gizzard.jpeg',
       'liver': '/assets/chicken_liver.jpeg',

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import prod_img from '../../assets/source_img';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
+
 const SupplierProducts = () => {
   const [Products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        let res = await fetch('http://localhost:3000/supplier/getProducts', {
+        let res = await fetch(`${apiUrl}/supplier/getProducts`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include the JWT token
@@ -27,7 +31,7 @@ const SupplierProducts = () => {
 
   const handleDelete = async (productId) => {
     try {
-      const res = await fetch(`http://localhost:3000/product/deleteProduct/${productId}`, {
+      const res = await fetch(`${apiUrl}/product/deleteProduct/${productId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include the JWT token

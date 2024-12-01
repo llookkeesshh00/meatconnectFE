@@ -3,6 +3,9 @@ import prod_img from '../../assets/source_img';
 import { useNavigate } from 'react-router-dom';
 import { useContract } from '../../contexts/ContractContext';
 import { toast } from 'react-toastify';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 
 const BuyerOrder = () => {
     const Navigate= useNavigate();
@@ -21,7 +24,7 @@ const BuyerOrder = () => {
     useEffect(() => {
         const getAddresses = async () => {
             try {
-                const response = await fetch('http://localhost:3000/delivery/getAdress', {
+                const response = await fetch(`${apiUrl}/delivery/getAdress`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -61,7 +64,7 @@ const BuyerOrder = () => {
 
 
         try {
-            const response = await fetch('http://localhost:3000/orders/create', {
+            const response = await fetch(`${apiUrl}/orders/create`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,

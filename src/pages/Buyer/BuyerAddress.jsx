@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 
 const BuyerAddress = () => {
   const [addresses, setAddresses] = useState([]);
@@ -6,7 +9,7 @@ const BuyerAddress = () => {
   useEffect(() => {
     const getAddresses = async () => {
       try {
-        const response = await fetch('http://localhost:3000/delivery/getAdress', {
+        const response = await fetch(`${apiUrl}/delivery/getAdress`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -41,7 +44,7 @@ const BuyerAddress = () => {
               <th className="p-4 text-left">City</th>
               <th className="p-4 text-left">State</th>
               <th className="p-4 text-left">Pincode</th>
-              <th className="p-4 text-left">Buyer ID</th>
+              {/* <th className="p-4 text-left">Buyer ID</th> */}
               <th className="p-4 text-left">Actions</th>
             </tr>
           </thead>
@@ -53,7 +56,7 @@ const BuyerAddress = () => {
                 <td className="p-4">{address.city}</td>
                 <td className="p-4">{address.state}</td>
                 <td className="p-4">{address.pincode}</td>
-                <td className="p-4">{address.buyer}</td>
+                {/* <td className="p-4">{address.buyer}</td> */}
                 <td className="p-4">
                   <button
                     className="px-4 py-2 mr-2 bg-gray-200 shadow-lg text-gray-800 rounded hover:bg-blue-600 hover:text-white  hover:duration-500  hover:transition-all  transition-colors"

@@ -4,6 +4,9 @@ import prod_img from '../../assets/source_img';
 import { useNavigate } from 'react-router-dom';
 import { useContract } from '../../contexts/ContractContext';
 import { toast } from 'react-toastify';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 const BuyerContracts = () => {
   const navigate = useNavigate();
   const [contracts, setcontracts] = useState([]);
@@ -14,7 +17,7 @@ const BuyerContracts = () => {
   useEffect(() => {
 
     let fetchContracts = async () => {
-      let response = await fetch('http://localhost:3000/contract/getContracts/confirmed', {
+      let response = await fetch(`${apiUrl}/contract/getContracts/confirmed`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +41,7 @@ const BuyerContracts = () => {
       }
     }
     let fetchPendingContracts = async () => {
-      let response = await fetch('http://localhost:3000/contract/getContracts/pending', {
+      let response = await fetch(`${apiUrl}/contract/getContracts/pending`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

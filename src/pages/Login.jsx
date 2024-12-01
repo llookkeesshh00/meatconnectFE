@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const Login = ({ role, switchToSignup,terminate }) => {
   const navigate= useNavigate();
 
@@ -21,7 +21,7 @@ const Login = ({ role, switchToSignup,terminate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch(`${apiUrl}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

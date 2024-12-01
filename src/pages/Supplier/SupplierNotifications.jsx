@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import prod_img from '../../assets/source_img'; // Assuming prod_img is the path to the image
 import { useContract } from '../../contexts/ContractContext'; // You might need this if you're using it for context
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const SupplierNotifications = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const SupplierNotifications = () => {
 
   useEffect(() => {
     const fetchPendingContracts = async () => {
-      const response = await fetch('http://localhost:3000/contract/getContracts/supplier/pending', {
+      const response = await fetch(`${apiUrl}/contract/getContracts/supplier/pending`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

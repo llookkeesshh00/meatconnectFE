@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 const BuyerDigitalContract = () => {
     let date = new Date();
     const navigate = useNavigate();
@@ -80,7 +83,7 @@ const BuyerDigitalContract = () => {
             
             let agreementDetails = { contractDetails, deliveryLocation, buyerDetails, supplierDetails, productDetails }
             console.log(agreementDetails)
-            let response = await fetch('http://localhost:3000/contract/makeContract', {
+            let response = await fetch(`${apiUrl}/contract/makeContract`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,7 +113,7 @@ const BuyerDigitalContract = () => {
     useEffect(() => {
         const getBuyerDetails = async (req, res) => {
             try {
-                const response = await fetch('http://localhost:3000/buyer/getBuyerDetails', { // Adjust the endpoint as necessary
+                const response = await fetch(`${apiUrl}/buyer/getBuyerDetails`, { // Adjust the endpoint as necessary
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization
@@ -138,7 +141,7 @@ const BuyerDigitalContract = () => {
         const getSupplierDetails = async (req, res) => {
             try {
 
-                const response = await fetch(`http://localhost:3000/supplier/getSupplierDetails?supplierId=${supplierId}`, { // Adjust the endpoint as necessary
+                const response = await fetch(`${apiUrl}/supplier/getSupplierDetails?supplierId=${supplierId}`, { // Adjust the endpoint as necessary
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization
@@ -160,7 +163,7 @@ const BuyerDigitalContract = () => {
 
 
         const getProductDetails = async (req, res) => {
-            const response = await fetch(`http://localhost:3000/product/getProductDetails?productId=${productId}`, { // Adjust the endpoint as necessary
+            const response = await fetch(`${apiUrl}/product/getProductDetails?productId=${productId}`, { // Adjust the endpoint as necessary
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authorization

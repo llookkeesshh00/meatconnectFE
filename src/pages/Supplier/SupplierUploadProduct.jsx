@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 
 const SupplierUploadProduct = () => {
   const navigate = useNavigate();
@@ -54,7 +57,7 @@ const fishOptions = [
     const token = localStorage.getItem('token');
 
     try {
-      let res = await fetch('http://localhost:3000/supplier/uploadProduct', {
+      let res = await fetch(`${apiUrl}/supplier/uploadProduct`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

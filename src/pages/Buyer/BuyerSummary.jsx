@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import prod_img from '../../assets/source_img';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 
 const getMonthName = (month) => {
     const date = new Date(`${month}-01`);
@@ -15,7 +18,7 @@ const BuyerSummary = () => {
         // Fetch summary data from the backend
         const fetchSummary = async () => {
             try {
-                let response = await fetch('http://localhost:3000/summary/getsummary', {
+                let response = await fetch(`${apiUrl}/summary/getsummary`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -42,7 +45,7 @@ const BuyerSummary = () => {
         try {
             // Step 1: Create an order
             const orderResponse = await axios.post(
-                'http://localhost:3000/summary/create-order',
+                `${apiUrl}/summary/create-order`,
                 { amount },
                 {
                     headers: {

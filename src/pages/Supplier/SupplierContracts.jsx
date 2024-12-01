@@ -4,7 +4,7 @@ import prod_img from '../../assets/source_img';
 import { useNavigate } from 'react-router-dom';
 import { useContract } from '../../contexts/ContractContext';
 import { toast } from 'react-toastify';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const SupplierContracts = () => {
   const navigate = useNavigate();
   const [contracts, setcontracts] = useState([]);
@@ -15,7 +15,7 @@ const SupplierContracts = () => {
   useEffect(() => {
 
     let pendingfetchContracts = async () => {
-      let response = await fetch('http://localhost:3000/contract/getContracts/supplier/pending', {
+      let response = await fetch(`${apiUrl}/contract/getContracts/supplier/pending`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const SupplierContracts = () => {
       }
     }
     let confirmedfetchContracts = async () => {
-      let response = await fetch('http://localhost:3000/contract/getContracts/supplier/confirmed', {
+      let response = await fetch(`${apiUrl}/contract/getContracts/supplier/confirmed`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const SupplierContracts = () => {
 
   const handleAccept = async (order) => {
 
-    let response = await fetch(`http://localhost:3000/contract/acceptContract/${order.contract_id}`, {
+    let response = await fetch(`${apiUrl}/contract/acceptContract/${order.contract_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

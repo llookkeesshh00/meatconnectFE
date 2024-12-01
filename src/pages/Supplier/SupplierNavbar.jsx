@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const SupplierNavbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,7 +20,7 @@ const SupplierNavbar = () => {
 
         const getNotification = async () => {
 
-            let res = await fetch('http://localhost:3000/contract/getContracts/supplier/pending/notifications', {
+            let res = await fetch(`${apiUrl}/contract/getContracts/supplier/pending/notifications`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const BuyerNegotiationModal = ({ orderId, onClose }) => {
   const [priceOffer, setPriceOffer] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -8,7 +8,7 @@ const BuyerNegotiationModal = ({ orderId, onClose }) => {
     e.preventDefault();
     // Make API call to send the negotiation offer
     try {
-      const response = await fetch(`http://localhost:3000/buyer/negotiate`, {
+      const response = await fetch(`${apiUrl}/buyer/negotiate`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
