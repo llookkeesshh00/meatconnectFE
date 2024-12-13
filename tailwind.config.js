@@ -7,8 +7,10 @@ export default {
   fontFamily: {
     outfit: ["Outfit", "sans-serif"]
  },
-  theme: {
-    extend: {},
+ theme: {
+  extend: {
+    
   },
+},
   plugins: [],
 }
