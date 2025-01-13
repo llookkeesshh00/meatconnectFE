@@ -6,7 +6,7 @@ const prod_img = {
       'tenderloin': '/assets/chicken_tenderloin.jpeg',
       'whole leg': '/assets/chicken_whole_leg.jpeg',
       'boneless thigh': '/assets/chicken_boneless_thigh.jpeg',
-      'thigh': '/assets/chicken_thigh.jpeg',
+      'thigh': '/assets/chicken_thigh.webp',
       'drumstick': '/assets/chicken_drumstick.jpeg',
       'wing drumette': '/assets/chicken_wing_drumette.jpeg',
       'whole wing': '/assets/chicken_whole_wing.jpeg',
