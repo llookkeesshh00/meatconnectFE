@@ -63,25 +63,25 @@ const HomePage = () => {
           <h3 className="text-3xl font-bold mb-8"> How It Works ?</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="bg-white p-4 shadow-2xl">
-              <img src="./assets/explore.png" alt="Explore Contracts" className="mx-auto mb-4" /> 
+              <img src="./assets/explore.png" alt="Explore Contracts" className="mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2">Explore Contracts</h4>
               <p className="text-gray-700">Browse through a wide variety of contracts tailored to your needs uploaded by differnt types of verified suppliers.</p>
               <Link onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">Learn More</Link>
             </div>
             <div className="bg-white p-4 shadow-2xl">
-              <img src="./assets/select.png" alt="Select Contract" className="mx-auto mb-4" /> 
+              <img src="./assets/select.png" alt="Select Contract" className="mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2">Select Contract and Negotiate</h4>
               <p className="text-gray-700">Choose the best contract that suits your business requirements and you can order meat over regular periods till current contract ends.</p>
               <Link onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">View Options</Link>
             </div>
             <div className="bg-white p-4 shadow-2xl">
-            <div className="bg-white p-4 shadow-2xl">
-              <img src="./assets/payment.jpeg " alt="Take Delivery" className="h-2/5   mx-auto mb-4" /> 
+              <img src="./assets/payment.jpeg " alt="Take Delivery" className="h-2/5   mx-auto mb-4" />
               <h4 className="text-xl font-semibold mt-6 mb-2">Make Payments  </h4>
               <p className="text-gray-700 text-center">Make organized and legal payments based on Negotiation terms i.e monthy ,weekly,quaterly agreements</p>
               <Link onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">Track Delivery</Link>
             </div>
-              <img src="./assets/delivery.png" alt="Take Delivery" className="mx-auto mb-4" /> 
+            <div className="bg-white p-4 shadow-2xl">
+              <img src="./assets/delivery.png" alt="Take Delivery" className="mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2">Take Delivery </h4>
               <p className="text-gray-700">Efficient and timely delivery as per the contract terms.</p>
               <Link onClick={() => { toast.error('please sign up') }} className="mt-4 inline-block text-purple-500">Track Delivery</Link>
