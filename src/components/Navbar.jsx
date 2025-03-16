@@ -67,25 +67,39 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropd own */}
       {isMobileMenuOpen && (
         <ul className="md:hidden bg-white shadow-lg absolute w-full left-0 top-16 space-y-4 p-4">
-          {["home", "about-us", "suppliers", "buyers", "contracts"].map((item) => (
+          {["home", "about-us", "suppliers", "buyers"].map((item) => (
             <li key={item} onClick={() => { setMenu(item); setIsMobileMenuOpen(false); }}>
-              <Link to={`/${item}`} className="block text-gray-700 hover:text-purple-500 capitalize">{item.replace("-", " ")}</Link>
+              <Link
+                to={item === "home" ? "/" : `/${item}`}
+                className="block text-gray-700 hover:text-purple-500 capitalize"
+              >
+                {item.replace("-", " ")}
+              </Link>
             </li>
           ))}
           <hr />
-          <li><button onClick={() => { setSignup(!signup); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-purple-500">Sign up</button></li>
-          <li><button onClick={() => { setLogin(!login); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-purple-500">Login</button></li>
+          <li>
+            <button onClick={() => { setSignup(!signup); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-purple-500">
+              Sign up
+            </button>
+          </li>
+          <li>
+            <button onClick={() => { setLogin(!login); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-purple-500">
+              Login
+            </button>
+          </li>
         </ul>
       )}
+
 
       {/* Overlay for Login & Signup */}
       {(signup || login) && (
         <div className="fixed bg-black inset-0 bg-opacity-70 flex justify-center items-center z-50 pt-10">
           <div className="bg-purple-200 rounded-lg shadow-lg w-full max-w-md relative p-6">
-           
+
             <button onClick={terminate} className="absolute top-4 right-4 text-gray-700 hover:text-gray-900">
               <X size={28} />
             </button>
