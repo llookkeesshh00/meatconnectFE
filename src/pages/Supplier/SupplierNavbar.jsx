@@ -43,7 +43,7 @@ const SupplierNavbar = () => {
   };
 
   return (
-    <div className="container  min-h-screen flex flex-col  p-2 w-1/4 shadow-2xl border-purple-300 text-sm sm:text-base">
+    <div className="container  min-h-screen flex flex-col text-xs sm:text-base  p-2 w-1/4 shadow-2xl border-purple-300 text-sm sm:text-base">
       <div className="p-2 flex flex-col gap-3">
         <div
           onClick={() => { navigate('/supplieruploadproducts'); }}

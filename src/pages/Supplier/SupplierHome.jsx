@@ -13,7 +13,7 @@ const SupplierHome = () => {
       backgroundSize: 'contain',
       backgroundPosition: 'center' }}>
       <div className=" shadow-lg rounded-lg p-8">
-        <h2 className="sm:text-4xl text-xl font-bold text-purple  text-center mb-4">
+        <h2 className="sm:text-4xl text-xl font-bold text-purple text-white  text-center mb-4">
           Welcome, Supplier!
         </h2>
         <p className="text-center text-white sm:text-xl  mb-6">
