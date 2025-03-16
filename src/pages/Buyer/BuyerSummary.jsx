@@ -67,7 +67,7 @@ const BuyerSummary = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="sm:max-w-6xl mx-auto sm:p-6 p-2 overflow-x-auto">
             {isLoading ? (
                 <div className="fixed inset-0 flex flex-col gap-6 justify-center items-center bg-white bg-opacity-75">
                     <div className="font-bold text-xl">Please wait</div>
@@ -78,7 +78,7 @@ const BuyerSummary = () => {
                 </div>
             ) : (
                 <>
-                    <h2 className="text-3xl font-semibold text-center mb-6">Monthly Payment Summary</h2>
+                    <h2 className="sm:text-3xl text-xl font-semibold text-center mb-6">Monthly Payment Summary</h2>
                     {Object.keys(summary).length > 0 ? (
                         Object.entries(summary).map(([month, orders]) => {
                             // Get the full month name
@@ -91,7 +91,7 @@ const BuyerSummary = () => {
                             return (
                                 <div key={month} className="mb-8">
                                     <h3 className="text-2xl font-semibold mb-4">{`${month} (${monthName})`}</h3>
-                                    <table className="min-w-full bg-white table-auto border-collapse border border-gray-300 shadow-md">
+                                    <table className="sm:min-w-full bg-white table-auto border-collapse border border-gray-300 shadow-md">
                                         <thead>
                                             <tr className="bg-gray-200">
                                                 <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Image</th>

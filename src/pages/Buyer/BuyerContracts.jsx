@@ -74,7 +74,7 @@ const BuyerContracts = () => {
   };
 
   return (
-    <div>
+    <div className='flex flex-col gap-3 '>
       {isLoading ? (
         <div className="fixed inset-0 flex flex-col gap-6 justify-center items-center bg-white bg-opacity-75">
           <div className="font-bold text-xl">Please wait</div>
@@ -85,7 +85,7 @@ const BuyerContracts = () => {
         </div>
       ) : (
         <>
-          <div className='min-h-screen bg-gray-00 sm:text-base text-xs p-5'>
+          <div className='min-h-1/2 bg-gray-00 flex flex-col  sm:text-base text-xs p-5'>
             <h1 className='text-3xl font-semibold text-black mb-5'>Current Contracts</h1>
             {contracts.length > 0 ? (
               <div className='grid grid-cols-1 gap-6'>
@@ -125,7 +125,7 @@ const BuyerContracts = () => {
             )}
           </div>
 
-          <div className='min-h-screen bg-gray-100 p-10'>
+          <div className='min-h-1/2 -gray-100 p-10'>
             <h1 className='text-3xl font-semibold text-black mb-5'>Pending Contracts</h1>
             {pendingContracts.length > 0 ? (
               <div className='grid grid-cols-1 gap-6'>
