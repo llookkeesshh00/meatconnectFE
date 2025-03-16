@@ -30,7 +30,7 @@ const NavBar = () => {
     <nav className="bg-white shadow-md relative">
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
         <div className="text-2xl font-bold text-purple-500">
-          <Link to="/">MeatSupply Pro</Link>
+          <Link to="/">Meat Connect</Link>
         </div>
 
         {/* Hamburger Menu for Mobile */}
