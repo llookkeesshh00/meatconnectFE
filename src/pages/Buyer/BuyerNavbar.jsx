@@ -22,7 +22,7 @@ const BuyerNavbar = () => {
     },);
 
     return (
-        <div className="container bg-purple-00 border w-1/4 flex flex-col  p-2 border-r-2 border-purple-300">
+        <div className="container   w-1/4 flex flex-col min-h-screen  p-2 shadow-2xl">
             <div className="p-2 flex flex-col gap-3">
                 {/* Home */}
                 <div onClick={() => { navigate('/buyer/buyerhome') }}

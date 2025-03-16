@@ -11,29 +11,21 @@ const SupplierTopNavbar = () => {
   };
 
   return (
-    <div className="topnavbar w-full bg-slapte-300 h-12 p-3 flex justify-between bg-gray-200 gap-8 pr-4 items-center">
-      {/* Mobile menu toggle */}
-      <div className="md:hidden flex items-center">
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-purple-900 text-xl font-bold"
-        >
-          {menuOpen ? 'X' : '☰'}
-        </button>
-      </div>
-
+    <div className="topnamvbar text-xs bg-white sm:text-base  w-full z-50  shadow-2xl h-12 p-3 flex justify-between  gap-8 pr-4 items-center">
+      
+  
       {/* Logo/Text */}
-      <div className="text-purple-900 text-xl font-bold flex">
+      <div className="text-purple-900 sm:text-xl font-bold flex">
         Hey Supplier!
       </div>
 
       {/* Menu for larger screens */}
-      <div className="hidden md:flex items-center gap-16">
+      <div className=" flex items-center sm:gap-16 gap-2">
         <div className="item flex items-center gap-1 transition-transform transform hover:scale-105 cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
             <path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z" />
           </svg>
-          <div className="text font-semibold text-purple-500 hover:text-purple-700 transition-colors">dashboard</div>
+          <div onClick={()=>{navigate("supplier/supplierHome")}} className="text font-semibold text-purple-500 hover:text-purple-700 transition-colors">dashboard</div>
         </div>
 
         <div className="item flex items-center gap-1 transition-transform transform hover:scale-105 cursor-pointer">
@@ -52,17 +44,7 @@ const SupplierTopNavbar = () => {
       </div>
 
       {/* Mobile menu (toggle on click) */}
-      <div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} absolute top-14 left-0 w-full bg-gray-200 p-4 flex flex-col items-center`}>
-        <div className="item flex items-center gap-1 mb-4">
-          <div className="text font-semibold text-purple-500 hover:text-purple-700 transition-colors">dashboard</div>
-        </div>
-        <div className="item flex items-center gap-1 mb-4">
-          <div className="text font-semibold text-purple-900 hover:text-purple-700 transition-colors">Mr {localStorage.getItem('name')}</div>
-        </div>
-        <div onClick={handleLogout} className="item flex items-center gap-1">
-          <div className="text font-semibold text-purple-500 hover:text-purple-700 transition-colors">logout</div>
-        </div>
-      </div>
+      
     </div>
   );
 };

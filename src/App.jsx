@@ -75,17 +75,21 @@ function App() {
 
   return (
 
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex flex-col min-h-screen  ">
 
-      {!logged && <NavBar />}
+      <div className='fixed sm:left-[36px] z-50 left-0 w-full top-0 sm:w-[1280px] '>
+        {!logged && <NavBar />}
 
-      {logged && role == 'buyer' && <BuyerTopNavbar className="w-full fixed" />}
-      {logged && role == 'supplier' && <SupplierTopNavbar className="w-full fixed" />}
+        {logged && role == 'buyer' && <BuyerTopNavbar className="w-full fixed" />}
+        {logged && role == 'supplier' && <SupplierTopNavbar className="w-full fixed" />}
+      </div>
+      <div className="flex  pt-[48px]   ">
 
-      <div className="flex flex-1">
+
         {logged && role == 'buyer' && <BuyerNavbar className="w-16 sm:w-24 md:w-40 lg:w-64 " />}
         {logged && role == 'supplier' && <SupplierNavbar className="w-16 sm:w-24 md:w-40 lg:w-64 " />}
-        <div className=" w-full mx-auto ">
+
+        <div className=" w-full mx-auto ml-4 ">
 
           <Routes>
             <Route path="/" element={<HomePage />} />

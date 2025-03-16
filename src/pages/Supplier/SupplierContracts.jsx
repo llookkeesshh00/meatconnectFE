@@ -83,7 +83,7 @@ const SupplierContracts = () => {
                 </div>
             ): (
         <>
-          <div className="bg-gray-00 p-6 sm:p-10 m-4 sm:m-10">
+          <div className="bg-gray-00 p-4 sm:p-10 m-4 sm:m-10 text-sm sm:text-base">
             <h1 className="text-2xl sm:text-3xl font-semibold text-black mb-5">Pending Contracts</h1>
             {pending_contracts.length === 0 ? (
               <p className="text-lg sm:text-xl text-red-500">No pending contracts</p>

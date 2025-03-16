@@ -10,7 +10,7 @@ const BuyerTopNavbar = () => {
   };
 
   return (
-      <div className="topnavbar   text-sm sm:text-base drop-shadow-lg rounded-xl flex justify-between  p-2 bg-white   items-center gap-16">
+      <div className="topnavbar   text-sm sm:text-base drop-shadow-lg rounded-l flex justify-between  p-3 bg-white   items-center gap-16">
         {/* Dashboard Button */}
         <div className="text-purple-900 sm:text-base text-sm font-bold">Hey Buyer!
         </div>
