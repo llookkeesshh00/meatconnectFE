@@ -83,9 +83,9 @@ function App() {
       {logged && role == 'supplier' && <SupplierTopNavbar className="w-full fixed" />}
 
       <div className="flex flex-1">
-        {logged && role == 'buyer' && <BuyerNavbar className="w-64 sticky" />}
-        {logged && role == 'supplier' && <SupplierNavbar className="w-64 sticky" />}
-        <div className=" w-full mx-auto overflow-y-auto">
+        {logged && role == 'buyer' && <BuyerNavbar className="w-16 sm:w-24 md:w-40 lg:w-64 " />}
+        {logged && role == 'supplier' && <SupplierNavbar className="w-16 sm:w-24 md:w-40 lg:w-64 " />}
+        <div className=" w-full mx-auto ">
 
           <Routes>
             <Route path="/" element={<HomePage />} />

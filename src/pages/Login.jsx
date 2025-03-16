@@ -57,7 +57,7 @@ const Login = ({ role, switchToSignup, terminate }) => {
 
   return (
     <div className=''>
-      <div className="inset-0 container shadow-xl bg-purple-200 max-w-md m-2 p-3 rounded-lg">
+      <div className="inset-0 container -xl bg-purple-200 max-w-md m-2 p-3 rounded-lg">
         <h1 className='text-2xl'>Login to get Started</h1>
         {errorMessage && <p className="text-red-600">{errorMessage}</p>}
         {isLoading ? (

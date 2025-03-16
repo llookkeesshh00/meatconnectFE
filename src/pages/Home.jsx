@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-cover bg-center h-[400px] w-full mt-4 shadow-xl" style={{ backgroundImage: `url(./assets/image9.jpg)` }}>
+      <section className="bg-cover bg-center h-[400px] sm:w-full mt-4 shadow-xl" style={{ backgroundImage: `url(./assets/image9.jpg)` }}>
         <div className="container mx-auto flex flex-col justify-center h-full text-center">
           <h1 className="text-purple-400  text-5xl font-bold">Meat Supply Connection Farm</h1>
           <p className="text-purple-400 text-xl mt-4">Connecting farms with reliable meat supply partners.</p>
@@ -26,9 +26,9 @@ const HomePage = () => {
         </Link>
       </section> */}
       <section className="p-16">
-        <div className="container mx-auto text-center">
-          <h3 className="text-2xl font-bold mb-8">Why Choose Us!</h3>
-          <div className="flex flex- justify-center">
+        <div className="container mx-auto text-center ">
+          <h3 className="text-3xl font-bold mb-8">Why Choose Us!</h3>
+          <div className="sm:flex  sm:flex-row flex flex-col  justify-center">
             <div className="bg-white p-4 shadow-2xl m-2 w-full md:w-1/4 hover:scale-105 hover:shadow-2xl transition-transform duration-500">
               <img src="./assets/h1.jpg" alt="High-Quality Meat Products" className="mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2">High-Quality Meat Products</h4>
@@ -60,7 +60,7 @@ const HomePage = () => {
       {/* How It Works Section */}
       <section className="p-16 ">
         <div className="container mx-auto text-center">
-          <h3 className="text-2xl font-bold mb-8">How It Works</h3>
+          <h3 className="text-3xl font-bold mb-8"> How It Works ?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-4 shadow-2xl">
               <img src="./assets/explore.png" alt="Explore Contracts" className="mx-auto mb-4" /> {/* Dummy image */}
@@ -95,15 +95,19 @@ const HomePage = () => {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto text-center">
-          <img src="https://via.placeholder.com/150x50" alt="MeatConnect" className="mx-auto mb-4" /> {/* Dummy logo */}
-          <ul className="flex justify-center space-x-6 text-sm">
-            <li><Link to="/pricing" className="hover:underline">Pricing</Link></li>
-            <li><Link to="/about" className="hover:underline">About Us</Link></li>
-            <li><Link to="/features" className="hover:underline">Features</Link></li>
-            <li><Link to="/help" className="hover:underline">Help Center</Link></li>
-            <li><Link to="/contact" className="hover:underline">Contact Us</Link></li>
-            <li><Link to="/faq" className="hover:underline">FAQs</Link></li>
+        <div className="container  mx-auto text-center">
+
+
+          <ul className=" sm:flex sm:flex-row justify-center  flex items-center flex-col space-x-6 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 64 64">
+              <linearGradient id="8xesnh1A1UH5qzSU5Ofa6a_bPDnjFfpBByo_gr1" x1="32.5" x2="32.5" y1="-.378" y2="64.868" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1a6dff"></stop><stop offset=".695" stop-color="#c822ff"></stop></linearGradient><path fill="url(#8xesnh1A1UH5qzSU5Ofa6a_bPDnjFfpBByo_gr1)" d="M55,33.5C55,45.91,44.91,56,32.5,56c-3.63,0-7.07-0.88-10.11-2.42l0.82-1.85 C26,53.18,29.15,54,32.5,54C43.8,54,53,44.8,53,33.5S43.8,13,32.5,13S12,22.2,12,33.5c0,3.98,1.16,7.67,3.12,10.81v0.01 l-0.97,2.14C11.54,42.8,10,38.33,10,33.5C10,21.09,20.09,11,32.5,11S55,21.09,55,33.5z"></path><linearGradient id="8xesnh1A1UH5qzSU5Ofa6b_bPDnjFfpBByo_gr2" x1="40" x2="40" y1="-7.096" y2="52.554" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6dc7ff"></stop><stop offset=".492" stop-color="#aab9ff"></stop><stop offset="1" stop-color="#e6abff"></stop></linearGradient><polygon fill="url(#8xesnh1A1UH5qzSU5Ofa6b_bPDnjFfpBByo_gr2)" points="37,48 43,42.17 43,48"></polygon><linearGradient id="8xesnh1A1UH5qzSU5Ofa6c_bPDnjFfpBByo_gr3" x1="27.58" x2="27.58" y1="-8.029" y2="51.291" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6dc7ff"></stop><stop offset=".492" stop-color="#aab9ff"></stop><stop offset="1" stop-color="#e6abff"></stop></linearGradient><polygon fill="url(#8xesnh1A1UH5qzSU5Ofa6c_bPDnjFfpBByo_gr3)" points="37,16 28,36 37,36 37,33 43,39 37,45 37,42 25.3,42 19,56 12,56 36.18,4 43.16,4 43,36 37,30"></polygon>
+            </svg>
+            <li><Link to="/pricing" className="underline ">Pricing</Link></li>
+            <li><Link to="/about-us" className="underline u">About Us</Link></li>
+            <li><Link to="/features" className="underline">Features</Link></li>
+            <li><Link to="/help" className="underline">Help Center</Link></li>
+            <li><Link to="/contact" className="underline">Contact Us</Link></li>
+            <li><Link to="/faq" className="underline">FAQs</Link></li>
           </ul>
         </div>
       </footer>

@@ -53,9 +53,9 @@ const BuyerTracking = () => {
           <h1 className="text-2xl font-bold mb-4">Order History</h1>
           <p className="text-gray-600 mb-6">All past order details at one place</p>
 
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col ">
             {orders.map((order) => (
-              <div key={order._id} className="flex justify-between relative bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-4">
+              <div key={order._id} className="flex flex-col sm:flex sm:flex-row justify-between relative bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-4">
                 {/* Status marker at the top left */}
                 <div className={`absolute top-[10px] left-[20px] px-3 py-1 rounded-full text-sm font-semibold 
                   ${order.status === 'confirmed' ? 'bg-yellow-200 text-yellow-800' : 'bg-green-200 text-green-800'}`}>

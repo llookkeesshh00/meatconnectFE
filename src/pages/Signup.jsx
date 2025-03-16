@@ -49,9 +49,9 @@ const Signup = ({ role, switchToLogin }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 b rounded-md shadow-lg">
+    <div className="max-w-md mx-auto p b rounded-md shadow-lg mt-4 ">
       {isLoading ? (
-        <div className="fixed inset-0 flex flex-col gap-6 bg-white justify-center items-center bg-violet- 5">
+        <div className="fixed inset-0 flex flex-col gap-2  bg-white justify-center items-center bg-violet- 5">
           <div className="font-bold text-xl">Please wait</div>
           <video autoPlay loop muted className="w-36 h-36 opacity-60 mb-6">
             <source src="assets/loading.mp4" type="video/mp4" />
@@ -60,8 +60,8 @@ const Signup = ({ role, switchToLogin }) => {
         </div>
       ) : (
         <>
-          <h2 className="text-2xl font-bold mb-4">Sign up as a {role}</h2>
-          <form onSubmit={handleSubmit}>
+          {/* <h2 className="text-2xl font-bold ">Sign up as a {role}</h2> */}
+          <form onSubmit={handleSubmit} className=''>
             <input
               type="text"
               name="name"

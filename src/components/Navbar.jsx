@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'; // Using Link from react-router-dom
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
+import { Menu, X } from 'lucide-react'; // Icons for hamburger menu
 
 const NavBar = () => {
-  const [menu, setmenu] = useState("")
-  const [login, setlogin] = useState(false)
-  const [signup, setsignup] = useState(false)
-  const [role, setrole] = useState("")
-  
-  
-  const switchToLogin=()=>{
-    setlogin(true);
-    setsignup(false);
+  const [menu, setMenu] = useState("");
+  const [login, setLogin] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const [role, setRole] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  }
-  const switchToSignup=()=>{
-    setlogin(false);
-    setsignup(true);
+  const switchToLogin = () => {
+    setLogin(true);
+    setSignup(false);
+  };
 
-  }
-  const terminate=()=>{
-    setlogin(false);
-    setsignup(false);
+  const switchToSignup = () => {
+    setLogin(false);
+    setSignup(true);
+  };
 
-  }
+  const terminate = () => {
+    setLogin(false);
+    setSignup(false);
+  };
 
   return (
     <nav className="bg-white shadow-md relative">
@@ -33,49 +33,88 @@ const NavBar = () => {
           <Link to="/">MeatSupply Pro</Link>
         </div>
 
-        {/* Navigation Links */}
-        <ul className="flex space-x-6">
-          <li onClick={() => { setmenu("home") }} className={menu === "home" ? "border-violet-600 border-b-2 " : ""} > <Link to="/" className="text-gray-700 hover:text-purple-500" >Home</Link></li>
-          <li onClick={() => { setmenu("about-us") }} className={menu === "about-us" ? "border-violet-600 border-b-2 " : ""} > <Link to="/about-us" className="text-gray-700 hover:text-purple-500" >About Us</Link></li>
-          <li onClick={() => { setmenu("suppliers") }} className={menu === "suppliers" ? "border-violet-600 border-b-2 " : ""} ><Link to="/suppliers" className="text-gray-700 hover:text-purple-500">Suppliers</Link></li>
-          <li onClick={() => { setmenu("buyers") }} className={menu === "buyers" ? "border-violet-600 border-b-2 " : ""} ><Link to="/buyers" className="text-gray-700 hover:text-purple-500">Buyers</Link></li>
-          <li onClick={() => { setmenu("contracts") }} className={menu === "contracts" ? "border-violet-600 border-b-2" : ""} > <Link to="/contracts" className="text-gray-700 hover:text-purple-500">Contracts</Link>        </li>
+        {/* Hamburger Menu for Mobile */}
+        <div className="md:hidden">
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        <ul className="hidden md:flex space-x-6">
+          {[
+            { name: "home", path: "/" },
+            { name: "about-us", path: "/about-us" },
+            { name: "suppliers", path: "/suppliers" },
+            { name: "buyers", path: "/buyers" },
+            { name: "contracts", path: "/contracts" },
+          ].map((item) => (
+            <li
+              key={item.name}
+              onClick={() => setMenu(item.name)}
+              className={menu === item.name ? "border-violet-600 border-b-2" : ""}
+            >
+              <Link to={item.path} className="text-gray-700 hover:text-purple-500 capitalize">
+                {item.name.replace("-", " ")}
+              </Link>
+            </li>
+          ))}
         </ul>
 
-        {/* Get In Touch Button */}
-        <div className='flex gap-5'>
-          <button onClick={() => { setsignup(!signup) }} className="text-gray-700 hover:text-purple-500">Sign up</button>
-          <button onClick={() => { setlogin(!login) }} className="text-gray-700 hover:text-purple-500">Login</button>
-
+        {/* Sign up & Login Buttons */}
+        <div className="hidden md:flex gap-5">
+          <button onClick={() => setSignup(!signup)} className="text-gray-700 hover:text-purple-500">Sign up</button>
+          <button onClick={() => setLogin(!login)} className="text-gray-700 hover:text-purple-500">Login</button>
         </div>
       </div>
-      {(signup || login) && 
-                <div className="fixed inset-0 bg-black opacity-70 z-2 ">
-                 <svg  onClick={()=>{ setlogin(false);setsignup(false);}} className='absolute right-12 top-4' xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg>
-                </div>}
 
-      <div className="popup absolute top-[19px] left-[400px] w-1/3">
-        {login && <Login role={role} switchToSignup={switchToSignup} terminate={terminate} />}
-      </div>
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <ul className="md:hidden bg-white shadow-lg absolute w-full left-0 top-16 space-y-4 p-4">
+          {["home", "about-us", "suppliers", "buyers", "contracts"].map((item) => (
+            <li key={item} onClick={() => { setMenu(item); setIsMobileMenuOpen(false); }}>
+              <Link to={`/${item}`} className="block text-gray-700 hover:text-purple-500 capitalize">{item.replace("-", " ")}</Link>
+            </li>
+          ))}
+          <hr />
+          <li><button onClick={() => { setSignup(!signup); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-purple-500">Sign up</button></li>
+          <li><button onClick={() => { setLogin(!login); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-purple-500">Login</button></li>
+        </ul>
+      )}
 
-      <div className="popup absolute top-[10px]  left-[400px] w-1/3  rounded-lg shadow-lg">
-        {signup &&
-          <div className="z-10 m-2 bg-purple-200">
-            <div className="containeor p-10  ">
-              <h1 className='text-3xl font-semibold text-black'>Please select your role</h1>
-              <div className='mt-4'>
-                <button className={role == 'buyer' ? 'border-b-4 border-black p-2 text-purple font-semibold ' : '  p-2 text-black font-semibold bg-purple-8900 hover:bg-purple-300 mr-2 rounded-md'} onClick={() => { setrole('buyer'); nav }}> Buyer  </button>
-                <button className={role == 'supplier' ? 'border-b-4 p-2 border-black text-purpk font-semibold ' : '  p-2 text-black font-semibold  bg-purple-8080 hover:bg-purple-300 ml-2 rounded-md'} onClick={() => { setrole('supplier'); nav }}> Supplier  </button>
+      {/* Overlay for Login & Signup */}
+      {(signup || login) && (
+        <div className="fixed bg-black inset-0 bg-opacity-70 flex justify-center items-center z-50 pt-10">
+          <div className="bg-purple-200 rounded-lg shadow-lg w-full max-w-md relative p-6">
+           
+            <button onClick={terminate} className="absolute top-4 right-4 text-gray-700 hover:text-gray-900">
+              <X size={28} />
+            </button>
+
+            {login && <Login role={role} switchToSignup={switchToSignup} terminate={terminate} />}
+
+            {signup && (
+              <div className="text-center ">
+                <h1 className="text-3xl font-semibold text-black mb-4">Please select your role</h1>
+                <div className="flex justify-center gap-4">
+                  <button
+                    className={`p-2 text-black font-semibold rounded-md ${role === 'buyer' ? 'border-b-4 border-black' : 'bg-purple-300 hover:bg-purple-400'}`}
+                    onClick={() => setRole('buyer')}
+                  >
+                    Buyer
+                  </button>
+                  <button
+                    className={`p-2 text-black font-semibold rounded-md ${role === 'supplier' ? 'border-b-4 border-black' : 'bg-purple-300 hover:bg-purple-400'}`}
+                    onClick={() => setRole('supplier')}
+                  >
+                    Supplier
+                  </button>
+                </div>
+                {role && <Signup role={role} switchToLogin={switchToLogin} />}
               </div>
-            </div>
-           { role==='supplier'&& <Signup role={role} switchToLogin={switchToLogin}/>}
-           {role==='buyer' && <Signup role={role} switchToLogin={switchToLogin}/>}
+            )}
           </div>
-
-        }
-
-      </div>
-
+        </div>
+      )}
 
     </nav>
   );

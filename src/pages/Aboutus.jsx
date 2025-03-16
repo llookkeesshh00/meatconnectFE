@@ -2,13 +2,13 @@ import React from 'react';
 import { toast } from 'react-toastify';
 const AboutUs = () => {
   return (
-    <div className="container mx-auto px-4 py-16 bg-gray-100">
+    <div className="container mx-auto sm:px-4 sm:py-16 bg-gray-100">
       <div className="bg-white p-12 rounded-lg shadow-lg mb-16">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">About Us</h2>
         <p className="text-lg text-gray-700 text-center mb-8">
           We are a platform dedicated to revolutionizing the meat supply chain. Our goal is to connect meat suppliers and buyers seamlessly, ensuring efficient order management, transparent communication, and high-quality products.
         </p>
-        <img src="/assets/image3.jpg" alt="Hero Image" className="h-[70vh] w-[75vw] mx-auto rounded-lg shadow-md" />
+        <img src="/assets/image3.jpg" alt="Hero Image" className="sm:h-[70vh] sm:w-[75vw] mx-auto rounded-lg shadow-md" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -17,14 +17,14 @@ const AboutUs = () => {
           <p className="text-lg text-gray-700">
             To streamline the meat supply chain and provide a reliable, efficient, and transparent platform for all stakeholders, including suppliers, buyers, and consumers. We aim to create a win-win situation for everyone involved.
           </p>
-          <img src="/assets/image5.jpg" alt="Mission Image" className="w-[50vw] rounded-lg h-[50vh] shadow-md mt-4" />
+          <img src="/assets/image5.jpg" alt="Mission Image" className="sm:w-[50vw] rounded-lg h-[50vh] shadow-md mt-4" />
         </div>
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h3>
           <p className="text-lg text-gray-700">
             To be the leading platform for meat procurement, empowering businesses (restaurants, hotels, etc.) to thrive in the global market. We envision a future where buying and selling meat is a seamless, secure, and enjoyable experience.
           </p>
-          <img src="/assets/image4.jpg" alt="Vision Image" className="w-full rounded-lg h-[50vh] shadow-md mt-4" />
+          <img src="/assets/image4.jpg" alt="Vision Image" className="w-full rounded-lg sm:h-[50vh] shadow-md mt-4" />
         </div>
       </div>
 

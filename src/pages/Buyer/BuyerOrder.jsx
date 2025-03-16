@@ -97,7 +97,7 @@ const BuyerOrder = () => {
                 </div>
             ) : (
                 <>
-                    <h2 className="text-4xl font-semibold mb-4 text-purple-700">Place Your Order</h2>
+                    <h2 className=" font-semibold mb-4 sm:text-4xl text-xs text-purple-700">Place Your Order</h2>
 
                     <div className='flex gap-10 justify-between'>
                         <div className="bg-white p-4 w-full rounded shadow-lg mb-4 gap-12">

@@ -76,15 +76,15 @@ const BuyerHome = () => {
   });
 
   return (
-    <div className="flex flex-col m-3 gap-10">
-      <div className="flex justify-between w-full">
-        <div className="text-3xl flex justify-between font-semibold mb-6 ml-56">Available Products</div>
+    <div className="flex flex-col border p-2  gap-10">
+      <div className="flex flex-col sm:flex sm:flex-row justify-between sm:w-full">
+        <div className="text-3xl flex justify-between font-semibold mb-6 sm:ml-56">Available Products</div>
         <input
           type="text"
           placeholder="Search products..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="mb-4 px-4 py-2 border rounded w-[350px] hover:shadow-md hover:border-gray-200"
+          className="mb-4 px-4 py-2 border rounded w-[100px ] sm:w-[350px] hover:shadow-md hover:border-gray-200"
         />
       </div>
 
@@ -94,19 +94,19 @@ const BuyerHome = () => {
           <img
             src="/assets/chicken_vector2.jpg"
             onClick={() => { setSearchQuery('chicken') }}
-            className={`w-40 h-40 rounded-full ${searchQuery === 'chicken' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
+            className={`sm:w-40 sm:h-40 w-20 h-20 rounded-full ${searchQuery === 'chicken' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
             alt="chicken"
           />
           <img
             src="/assets/mutton_vector.jpg"
             onClick={() => { setSearchQuery('mutton') }}
-            className={`w-40 h-40 rounded-full ${searchQuery === 'mutton' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
+            className={`sm:w-40 sm:h-40 w-20 h-20 rounded-full ${searchQuery === 'mutton' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
             alt="mutton"
           />
           <img
             src="/assets/fish_vector.jpg"
             onClick={() => { setSearchQuery('fish') }}
-            className={`w-40 h-40 rounded-full ${searchQuery === 'fish' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
+            className={`sm:w-40 sm:h-40 w-20 h-20 rounded-full ${searchQuery === 'fish' ? 'border-8 border-gray-500 transition-all duration-300' : ''}`}
             alt="fish"
           />
         </div>
@@ -128,7 +128,7 @@ const BuyerHome = () => {
                 <img
                   src={prod_img[order.productCategory][order.productName]}
                   alt={order.productName}
-                  className="h-48 w-full object-cover"
+                  className="sm:h-48 sm:w-full sm:object-cover"
                 />
                 <div className="p-4 flex-1 gap-14">
                   <h2 className="text-2xl font-semibold">{order.productCategory}</h2>

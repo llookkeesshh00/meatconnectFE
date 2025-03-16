@@ -85,7 +85,7 @@ const BuyerContracts = () => {
         </div>
       ) : (
         <>
-          <div className='min-h-screen bg-gray-00 p-5'>
+          <div className='min-h-screen bg-gray-00 sm:text-base text-xs p-5'>
             <h1 className='text-3xl font-semibold text-black mb-5'>Current Contracts</h1>
             {contracts.length > 0 ? (
               <div className='grid grid-cols-1 gap-6'>
