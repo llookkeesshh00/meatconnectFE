@@ -86,7 +86,7 @@ const BuyerOrder = () => {
     };
 
     return (
-        <div className="p-6 max-w-[50vw] mx-auto">
+        <div className="p-6 sm:max-w-[50vw] mt-10 mx-auto shadow-2xl rounded-xl">
             {isLoading ? (
                 <div className="fixed inset-0 flex flex-col gap-6 justify-center items-center bg-white bg-opacity-75">
                     <div className="font-bold text-xl">Please wait</div>
@@ -97,15 +97,15 @@ const BuyerOrder = () => {
                 </div>
             ) : (
                 <>
-                    <h2 className=" font-semibold mb-4 sm:text-4xl text-xs text-purple-700">Place Your Order</h2>
+                    <h2 className=" font-semibold mb-4 sm:text-4xl  flex  text-xs text-purple-700">Place Your Order</h2>
 
-                    <div className='flex gap-10 justify-between'>
-                        <div className="bg-white p-4 w-full rounded shadow-lg mb-4 gap-12">
-                            <h3 className="text-2xl font-semibold mb-2">{temp.productName.toUpperCase()} {temp.productCatogery.toUpperCase()}</h3>
+                    <div className='flex  gap-10 justify-between w-full  border-black'>
+                        <div className="bg-white p-4 w-full rounded  mb-4 gap-12 text-xs sm:text-base">
+                            <h3 className="sm:text-2xl text-purple-500 font-semibold mb-2">{temp.productName.toUpperCase()} {temp.productCatogery.toUpperCase()}</h3>
                             <p><strong className='ml-'>Supplier:</strong> {temp.supplierName}</p>
                             <p><strong>Category:</strong> {temp.productCatogery}</p>
                             <p><strong>Price:</strong> ₹{temp.productPrice}</p>
-                            <label className="block mb-2 text-lg font-semibold">Quantity in (kgs)</label>
+                            <label className="block mb-2 sm:text-lg text-xs  font-semibold">Quantity in (kgs)</label>
                             <input
                                 type="number"
                                 min="1"
@@ -115,12 +115,12 @@ const BuyerOrder = () => {
                             />
                         </div>
                         <div className='flex items-center justify-center'>
-                            <img src={prod_img[temp.productCatogery][temp.productName]} alt="Product" className="w-full flex justify-center items-center h-[207px] shadow-lg" />
+                            <img src={prod_img[temp.productCatogery][temp.productName]} alt="Product" className="w-full flex justify-center p-2 items-center sm:h-[207px] " />
                         </div>
                     </div>
 
                     {/* Delivery Address Selection */}
-                    <div className="bg-white p-4 rounded shadow-lg mb-4">
+                    <div className="bg-white p-4 rounded  mb-4">
                         <h3 className="text-lg font-semibold mb-2">Select Delivery Address</h3>
                         <select
                             value={selectedAddress}

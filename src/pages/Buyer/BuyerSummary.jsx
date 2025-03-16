@@ -78,7 +78,7 @@ const BuyerSummary = () => {
                 </div>
             ) : (
                 <>
-                    <h2 className="sm:text-3xl text-xl font-semibold text-center mb-6">Monthly Payment Summary</h2>
+                    <h2 className="sm:text-3xl text-sm font-semibold text-center flex  mb-6">Monthly Payment Summary</h2>
                     {Object.keys(summary).length > 0 ? (
                         Object.entries(summary).map(([month, orders]) => {
                             // Get the full month name
@@ -89,54 +89,56 @@ const BuyerSummary = () => {
                             const totalPrice = orders.reduce((sum, order) => sum + (order.quantity * order.product_id.price), 0);
 
                             return (
-                                <div key={month} className="mb-8">
-                                    <h3 className="text-2xl font-semibold mb-4">{`${month} (${monthName})`}</h3>
-                                    <table className="sm:min-w-full bg-white table-auto border-collapse border border-gray-300 shadow-md">
-                                        <thead>
-                                            <tr className="bg-gray-200">
-                                                <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Image</th>
-                                                <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Category</th>
-                                                <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Name</th>
-                                                <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Quantity</th>
-                                                <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Total Price</th>
-                                                <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Status</th>
-                                                <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {orders.map((order) => (
-                                                <tr key={order._id} className="hover:bg-gray-50">
-                                                    <td className="px-6 py-3 text-gray-800 text-sm">
-                                                        <img
-                                                            src={prod_img[order.product_id.productCategory][order.product_id.productName]}
-                                                            alt="Product Image"
-                                                            className="w-20 h-20 object-contain"
-                                                        />
-                                                    </td>
-                                                    <td className="px-6 py-3 text-gray-800 text-sm">{order.product_id.productCategory}</td>
-                                                    <td className="px-6 py-3 text-gray-800 text-sm">{order.product_id.productName}</td>
-                                                    <td className="px-6 py-3 text-gray-800 text-sm">{order.quantity}</td>
-                                                    <td className="px-6 py-3 text-gray-800 text-sm">{order.quantity * order.product_id.price}</td>
-                                                    <td className="px-6 py-3 text-gray-800 text-sm">
-                                                        <div className="flex items-center gap-3">
-                                                            <div className="text-red-500">Pending</div>
-                                                            <div className="bg-red-500 w-2 h-2 rounded-full border border-black"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-6 py-3">
-                                                        <button
-                                                            className="bg-blue-600 text-white p-2 font-bold rounded-lg hover:bg-blue-700 transition-all duration-300"
-                                                            onClick={() => handlePayment(order.quantity * order.product_id.price)}
-                                                        >
-                                                            Make Payment
-                                                        </button>
-                                                    </td>
+                                <div key={month} className="mb-8 overflow-x-auto">
+                                    <h3 className="sm:text-2xl flex justify-startfont-semibold mb-4">{`${month} (${monthName})`}</h3>
+                                    <div className='overflow-x-auto'>
+                                        <table className="sm:min-w-full bg-white table-auto border-collapse border border-gray-300 shadow-md">
+                                            <thead>
+                                                <tr className="bg-gray-200">
+                                                    <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Image</th>
+                                                    <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Category</th>
+                                                    <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Product Name</th>
+                                                    <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Quantity</th>
+                                                    <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Total Price</th>
+                                                    <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Status</th>
+                                                    <th className="px-6 py-3 text-left text-gray-700 font-semibold text-sm">Actions</th>
                                                 </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                    <div className="mt-4 flex justify-end text-lg">
-                                        <p>Total Quantity: {totalQuantity} | Total Price: {totalPrice}</p>
+                                            </thead>
+                                            <tbody>
+                                                {orders.map((order) => (
+                                                    <tr key={order._id} className="hover:bg-gray-50">
+                                                        <td className="px-6 py-3 text-gray-800 text-sm">
+                                                            <img
+                                                                src={prod_img[order.product_id.productCategory][order.product_id.productName]}
+                                                                alt="Product Image"
+                                                                className="w-20 h-20 object-contain"
+                                                            />
+                                                        </td>
+                                                        <td className="px-6 py-3 text-gray-800 text-sm">{order.product_id.productCategory}</td>
+                                                        <td className="px-6 py-3 text-gray-800 text-sm">{order.product_id.productName}</td>
+                                                        <td className="px-6 py-3 text-gray-800 text-sm">{order.quantity}</td>
+                                                        <td className="px-6 py-3 text-gray-800 text-sm">{order.quantity * order.product_id.price}</td>
+                                                        <td className="px-6 py-3 text-gray-800 text-sm">
+                                                            <div className="flex items-center gap-3">
+                                                                <div className="text-red-500">Pending</div>
+                                                                <div className="bg-red-500 w-2 h-2 rounded-full border border-black"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-6 py-3">
+                                                            <button
+                                                                className="bg-blue-600 text-white p-2 font-bold rounded-lg hover:bg-blue-700 transition-all duration-300"
+                                                                onClick={() => handlePayment(order.quantity * order.product_id.price)}
+                                                            >
+                                                                Make Payment
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                        <div className="mt-4 flex justify-nd sm:text-lg">
+                                            <p>Total Quantity: {totalQuantity} | Total Price: {totalPrice}</p>
+                                        </div>
                                     </div>
                                 </div>
                             );

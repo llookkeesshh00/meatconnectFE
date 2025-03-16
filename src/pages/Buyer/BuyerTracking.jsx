@@ -64,8 +64,8 @@ const BuyerTracking = () => {
 
                 {/* Content section aligned to the left */}
                 <div className="flex pr-6 flex-col items-start">
-                  <p className="text-lg mb-4 flex mt-4 ">Order ID: <span className="font-semibold">{order._id}</span></p>
-                  <p className="text-md mb-1 flex gap-10">Product Name: <span className="font-semibold">{order.product_id.productName}</span></p>
+                  <p className="text-lg mb-4 mt-4 hidden sm:flex  ">Order ID: <span className="font-semibold ">{order._id}</span></p>
+                  <p className="text-md mb-1 mt-4 sm:mt-0 flex gap-10">Product Name: <span className="font-semibold">{order.product_id.productName}</span></p>
                   <p className="text-md mb-1 flex gap-4">Product Category: <span className="font-semibold">{order.product_id.productCategory}</span></p>
                   <p className="text-md mb-1 flex gap-20">Quantity: <span className="font-semibold">{order.quantity}</span></p>
                   <p className="text-md mb-1 flex gap-12">Price per KG: <span className="font-semibold">${order.product_id.price}</span></p>

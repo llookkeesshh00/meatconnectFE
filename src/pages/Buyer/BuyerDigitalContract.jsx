@@ -195,9 +195,9 @@ const BuyerDigitalContract = () => {
 
 
     return (
-        <div className="container bg-slate-200  mx-auto my-10 p-6  shadow-lg flex flex-col gap-9 rounded-lg max-w-4xl">
+        <div className="container bg-slate-n200  text-xs sm:text-base mx-auto my-10 p-6  shadow-lg flex flex-col gap-9 rounded-lg sm:max-w-4xl">
             {/* Supplier Details */} 
-            <strong className='text-xllg text-red-500'>NOTE: SUPPLIER WILL NEGOTIATE AND AFTER CONFIRMATION CONTRACT WILL BE MADE !!  </strong>
+            <strong className='text-xl text-red-500'>NOTE: SUPPLIER WILL NEGOTIATE AND AFTER CONFIRMATION CONTRACT WILL BE MADE !!  </strong>
             <div className="border-b-2 border-gray-300 p-4 mb-6  bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Supplier Details</h2>
                 <div className="grid grid-cols-2 gap-4">
